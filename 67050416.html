@@ -1,42 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-    
+<html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Portfolio - Pakkanan</title>
+
+    <!-- เรียกใช้ CSS -->
     <link rel="stylesheet" href="style.css">
-    <title>Portfolio Website</title>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">Alex</a>
 
-        <nav>
-            <a href="#" class="active"> Home</a>
-            <a href="#" >Services</a>
-            <a href="#" >Skills</a>
-            <a href="#" >Education</a>
-            <a href="#" >Experience</a>
-            <a href="#" >Contact</a>
-        </nav>
-    </header>
-    <section class="home">
-        <div class="home-img">
-            <img src="main.jpg" alt="">
-        </div>
-        <div class="home-content">
-            <h1>Hi, It's <span>Alex</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <a href="#" class="btn">Hire me</a>
+    <!-- ===== HERO / COVER ===== -->
+    <section class="hero">
+        <img src="cover.jpg" alt="Cover Image" class="cover-img">
+
+        <div class="hero-text">
+            <h1>Portfolio</h1>
+            <h2>UX / UI / WEB DESIGN</h2>
         </div>
     </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about">
+        <h2>แนะนำตัว</h2>
+        <p><strong>ชื่อ:</strong> Pakkanan Piempradat</p>
+        <p><strong>รหัสนักศึกษา:</strong> 67050416</p>
+        <p>
+            นักศึกษาที่สนใจด้านการออกแบบเว็บไซต์  
+            UX / UI และ Web Design  
+            ชื่นชอบการออกแบบที่เรียบง่าย ทันสมัย
+        </p>
+
+        <button onclick="showMessage()">Click Me</button>
+    </section>
+
+    <!-- ===== WORKS ===== -->
+    <section class="works">
+        <h2>ผลงาน</h2>
+
+        <div class="card-container">
+            <div class="card">
+                <h3>Website Design</h3>
+                <p>ออกแบบเว็บไซต์ Responsive</p>
+            </div>
+
+            <div class="card">
+                <h3>UX / UI</h3>
+                <p>ออกแบบประสบการณ์ผู้ใช้</p>
+            </div>
+
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>HTML CSS JavaScript</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>© 2026 Pakkanan Piempradat</p>
+    </footer>
+
+    <!-- เรียกใช้ JavaScript -->
+    <script src="code.js"></script>
 </body>
 </html>
