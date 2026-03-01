@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio - IOTE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admis1.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="top-bar">
+        <img src="images/logo.png" class="logo" alt="IOTE Logo">
+
+
+        <div class="title-box">
+            <div class="title">DEPARTMENT OF IOT AND<br>INFORMATION ENGINEERING</div>
+            <div class="subtitle">King Mongkut's Institute of Technology Ladkrabang</div>
+        </div>
+
+        
+            <div class="search-box">
+    <input type="text" placeholder="Search...">
+    <span class="search-icon">🔍</span>
+</div>
+
+            <!-- Hamburger -->
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+    </div>
+
+    <!-- Navigation bar -->
+    <!-- Side Menu Overlay -->
+<nav class="menu">
+    <a href="#" class="active">HOME</a>
+    <a href="#">ABOUT IOTE ▼ </a>
+    <a href="#">ACADEMICS ▼ </a>
+    <a href="#" class="active">ADMISSION ▼ </a>
+    <a href="#">FACULTY ▼ </a>
+    <a href="#">STUDENT SERVICES ▼ </a>
+</nav>
+
+    <div class="side-menu" id="menu">
+
+    <div class="menu-header">
+        <input type="text" placeholder="Search">
+        <span class="close-btn" onclick="toggleMenu()">✕</span>
+    </div>
+
+    <div class="menu-links">
+        <a href="#">HOME ></a>
+        <a href="#">ABOUT IOTE ></a>
+        <a href="#">ACADEMICS ></a>
+        <a href="#">ADMISSION ></a>
+        <a href="#">FACULTY ></a>
+        <a href="#">STUDENT SERVICES ></a>
+    </div>
+
+    <div class="menu-footer">
+        DEPARTMENT OF IOT AND<br>
+        INFORMATION ENGINEERING
+    </div>
+
+</div>
+</header>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+</script>
+
+<script>
+    // เปลี่ยน active ของเมนู
+    document.querySelectorAll('.menu a, .menu .dropdown').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.menu .active').forEach(el => {
+                el.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+</script>
+
+<!-- ================= BANNER ================= -->
+<section class="banner portfolio-banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-content">
+      <h1>PORTFOLIO</h1>
+      <p>รับสมัคร 75 คน</p>
+  </div>
+</section>
+<!-- ================= PORTFOLIO SLIDER ================= -->
+<section class="portfolio-section">
+
+  <button class="nav-btn" onclick="prevSlide()">❮</button>
+
+  <div class="portfolio-card">
+    <h2 id="title"></h2>
+
+    <p class="title">จำนวนรับ</p>
+    <p id="amount"></p>
+
+    <p class="title">คุณสมบัติ</p>
+    <ul id="desc"></ul>
+
+    <p class="title">รายละเอียดเพิ่มเติม</p>
+    <a id="link" href="#" target="_blank"></a>
+  </div>
+
+  <button class="nav-btn" onclick="nextSlide()">❯</button>
+
+</section>
+
+<div class="dots" id="dots"></div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+
+document.querySelectorAll('.menu a').forEach(item => {
+    item.addEventListener('click', function () {
+        document.querySelectorAll('.menu .active').forEach(el => {
+            el.classList.remove('active');
+        });
+        this.classList.add('active');
+    });
+});
+
+const slides = [
+  {
+    title:"โครงการ Young Engineer Talent",
+    amount:"30 คน (รับร่วมกัน)",
+    desc:[
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะศึกษา",
+      "ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อย 5 ภาคการศึกษา ไม่น้อยกว่า 3.50",
+      "เป็นผู้ที่เคยได้รับรางวัลการแข่งขันในระดับชาติหรือระดับนานาชาติอย่างน้อย 1 รายการ ทางด้านคณิตศาสตร์ – วิทยาศาสตร์ หรือเทคโนโลยีที่เกี่ยวข้องกับสาขาวิชาที่สมัคร ทั้งนี้ต้องเป็นงานที่จัดขึ้นโดยหน่วยงานซึ่งเป็นที่ยอมรับ อย่างกว้างขวาง",
+      "เป็นผู้ไม่มีโรคสำคัญที่เป็นอุปสรรคต่อการศึกษา"
+      
+    ],
+    link:"https://new.reg.kmitl.ac.th/admission/#/"
+  },
+  {
+    title:"โครงการเรียนดี ช้างเผือก กลุ่มโรงเรียนสายสามัญ",
+    amount:"30 คน (รับร่วมกัน)",
+    desc:[
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "โรงเรียนมีสิทธิ์เสนอชื่อนักเรียนได้ตามจํานวนและต้องให้นักเรียนที่มีผลการเรียนเฉลี่ยรวมอย่างน้อย 5 ภาคการศึกษา (ในระดับชั้นมัธยมศึกษาปีที่ 4-6) สูงที่สุด ได้รับสิทธิ์ในการส่งรายชื่อก่อนเสมอ"
+
+    ],
+    link:"https://new.reg.kmitl.ac.th/admission/#/"
+  },
+  {
+    title:"โครงการการรางวัลและประกาศนียบัตรทางวิชาการ",
+    amount:"30 คน (รับร่วมกัน)",
+    desc:[
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "เป็นผู้ไม่มีโรคสำคัญที่เป็นอุปสรรคต่อการศึกษา",
+      "ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อย 5 ภาคการศึกษา ไม่น้อยกว่า 3.00",
+      "เป็นผู้ที่มีผลงาน รางวัล หรือประกาศนียบัตร"
+    ],
+    link:"https://new.reg.kmitl.ac.th/admission/#/"
+  },
+  {
+    title:"โครงการโรงเรียนวิทยาศาสตร์",
+    amount:"30 คน (รับร่วมกัน)",
+    desc:[
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะศึกษา",
+      "ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อย 5 ภาคการศึกษา ไม่น้อยกว่า 3.00",
+      "เป็นผู้ที่กำลังศึกษาระดับชั้นมัธยมศึกษาปีที่ 6 (สายวิทยาศาสตร์ – คณิตศาสตร์) ในโรงเรียนวิทยาศาสตร์ หรือโรงเรียนที่มีโครงการห้องเรียนพิเศษด้านวิทยาศาสตร์ คณิตศาสตร์ หรือโรงเรียนที่มีการจัดการเรียนสอนให้แก่ผู้มีความสามารถ พิเศษด้านคณิตศาสตร์และวิทยาศาสตร์"
+
+    ],
+    link:"https://new.reg.kmitl.ac.th/admission/#/"
+  },
+  {
+    title:"โครงการ Engineer Pathway",
+    amount:"30 คน (รับร่วมกัน)",
+    desc:[
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะศึกษา",
+      "เป็นผู้ที่เข้าร่วมโครงการ Pre-engineering School ที่จัดโดยคณะวิศวกรรมศาสตร์ สจล. และได้คะแนนเแลี่ยสะสมรวมอย่างน้อย 3.50 จากการเรียน 6 วิชา",
+      "เป็นผู้ไม่มีโรคสำคัญที่เป็นอุปสรรคต่อการศึกษา"
+
+    ],
+    link:"https://new.reg.kmitl.ac.th/admission/#/"
+  },
+  {
+    title:"โครงการ สอวน.",
+    amount:"40 คน (รวมทุกหลักสูตร)",
+    desc:[
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "สำเร็จการศึกษาหรือกำลังศึกษาระดับชั้นมัธยมศึกษาปีที่ 6 (สายวิทยาศาสตร์ – คณิตศาสตร์และแผนการเรียนศิลป์ – คำนวณ) ",
+      "ต้องมีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อยรวม 4 ภาคการศึกษา ไม่น้อยกว่า 2.75",
+      "เป็นผู้สำเร็จการอบรมค่าย 2 ของมูลนิธิ สอวน."
+
+    ],
+    link:"https://new.reg.kmitl.ac.th/admission/#/"
+  },
+  {
+    title:"โครงการบุตรของบุคลากรสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
+    amount:"5 คน (รวมทุกหลักสูตร)",
+    desc:[
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "เป็นผู้ที่กำลังศึกษาระดับชั้นมัธยมศึกษาปีที่ 6 (สายวิทยาศาสตร์ – คณิตศาสตร์) ",
+      "ผู้สมัครต้องมีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อย 5 ภาคการศึกษา ไม่น้อยกว่า 2.75",
+      "เป็นผู้ไม่มีโรคสำคัญที่เป็นอุปสรรคต่อการศึกษา",
+      "ผู้สมัครต้องเป็นบุตรโดยชอบด้วยกฎหมายของพนักงานสถาบัน ข้าราชการ หรือลูกจ้างประจำของสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบังเท่านั้น ซึ่งยกเว้นบุตรบุญธรรม"
+
+    ],
+    link:"https://new.reg.kmitl.ac.th/admission/#/"
+  }
+  
+];
+let current = 0;
+
+function showSlide(index){
+  document.getElementById("title").innerText = slides[index].title;
+  document.getElementById("amount").innerText = slides[index].amount;
+
+  const descList = document.getElementById("desc");
+  descList.innerHTML = "";
+  slides[index].desc.forEach(item=>{
+    const li = document.createElement("li");
+    li.innerText = item;
+    descList.appendChild(li);
+  });
+
+  const link = document.getElementById("link");
+  link.href = slides[index].link;
+  link.innerText = slides[index].link;
+
+  updateDots();
+}
+
+function nextSlide(){
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide(){
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+function updateDots(){
+  const dotsContainer = document.getElementById("dots");
+  dotsContainer.innerHTML = "";
+  slides.forEach((_,i)=>{
+    const dot = document.createElement("span");
+    if(i===current) dot.classList.add("active");
+    dot.onclick = ()=>{ current=i; showSlide(i); };
+    dotsContainer.appendChild(dot);
+  });
+}
+
+showSlide(current);
+</script>
+
+</body>
+</html>

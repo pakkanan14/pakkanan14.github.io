@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOTE Department</title>
+    <link rel="stylesheet" href="admis1.css">
+</head>
+<body>
+
+<header>
+    <div class="top-bar">
+        <img src="images/logo.png" class="logo" alt="IOTE Logo">
+
+
+        <div class="title-box">
+            <div class="title">DEPARTMENT OF IOT AND<br>INFORMATION ENGINEERING</div>
+            <div class="subtitle">King Mongkut's Institute of Technology Ladkrabang</div>
+        </div>
+
+        
+            <div class="search-box">
+    <input type="text" placeholder="Search...">
+    <span class="search-icon">🔍</span>
+</div>
+
+            <!-- Hamburger -->
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+    </div>
+
+    <!-- Navigation bar -->
+    <!-- Side Menu Overlay -->
+<nav class="menu">
+    <a href="#" class="active">HOME</a>
+    <a href="#">ABOUT IOTE ▼ </a>
+    <a href="#">ACADEMICS ▼ </a>
+    <a href="#" class="active">ADMISSION ▼ </a>
+    <a href="#">FACULTY ▼ </a>
+    <a href="#">STUDENT SERVICES ▼ </a>
+</nav>
+
+    <div class="side-menu" id="menu">
+
+    <div class="menu-header">
+        <input type="text" placeholder="Search">
+        <span class="close-btn" onclick="toggleMenu()">✕</span>
+    </div>
+
+    <div class="menu-links">
+        <a href="#">HOME ></a>
+        <a href="#">ABOUT IOTE ></a>
+        <a href="#">ACADEMICS ></a>
+        <a href="#">ADMISSION ></a>
+        <a href="#">FACULTY ></a>
+        <a href="#">STUDENT SERVICES ></a>
+    </div>
+
+    <div class="menu-footer">
+        DEPARTMENT OF IOT AND<br>
+        INFORMATION ENGINEERING
+    </div>
+
+</div>
+</header>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+</script>
+
+<script>
+    // เปลี่ยน active ของเมนู
+    document.querySelectorAll('.menu a, .menu .dropdown').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.menu .active').forEach(el => {
+                el.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+
+   
+
+</script>
+<section class="card-section">
+    <a href="Portfolio.html" class="card">PORTFOLIO</a>
+    <a href="quota.html" class="card">QUOTA</a>
+    <a href="admission.html" class="card active-card">ADMISSION</a>
+</section>
+
+
+<!-- ====== DETAIL SECTION ====== -->
+<section class="detail-section">
+    <div class="detail-card">
+        <h2>รายละเอียดหลักสูตร</h2>
+
+        <p class="title">ชื่อหลักสูตร</p>
+        <p>วศ.บ. วิศวกรรมไอโอทีและสารสนเทศ</p>
+
+        <p class="title">ชื่อหลักสูตรภาษาอังกฤษ</p>
+        <p>B.Eng. IoT System and Information Engineering</p>
+
+        <p class="title">ประเภทหลักสูตร</p>
+        <p>ภาษาไทย ปกติ</p>
+
+        <p class="title">วิทยาเขต</p>
+        <p>ลาดกระบัง</p>
+
+        <p class="title">ค่าใช้จ่าย</p>
+        <p>ค่าธรรมเนียมการศึกษา 25,000 บาท</p>
+    </div>
+
+    <div class="btn-wrapper">
+        <button class="more-btn">อ่านรายละเอียดเพิ่มเติม</button>
+    </div>
+</section>
+
+
+<!-- ====== SCRIPT ====== -->
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+
+document.querySelectorAll('.menu a').forEach(item => {
+    item.addEventListener('click', function() {
+        document.querySelectorAll('.menu .active').forEach(el => {
+            el.classList.remove('active');
+        });
+        this.classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>
+
+
+</body>
+</html>
