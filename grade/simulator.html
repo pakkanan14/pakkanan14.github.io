@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPA Prediction & Graduation Simulator | IOTE Department</title>
+  <style>
+  body{ outline:10px solid hotpink !important; }
+</style>
+  <!-- Keep your global stylesheet -->
+  <link rel="stylesheet" href="simulator.css" />
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ===========================
+       Simulator page (scoped)
+       =========================== */
+    :root{
+      --bg0:#071522;
+      --bg1:#0b1b2c;
+      --bg2:#0c2237;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.05);
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.66);
+      --muted2: rgba(255,255,255,.52);
+      --good: rgba(120,255,200,.16);
+      --goodText: #8CFFD0;
+      --warn: rgba(255,196,120,.16);
+      --warnText:#FFD39A;
+      --bad: rgba(255,120,140,.16);
+      --badText:#FF9FB0;
+      --accent: #66D6FF;
+      --accent2:#7CFFB2;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 22px;
+      --radius2: 16px;
+    }
+
+    /* Fix white border / gap */
+    body{
+      margin:0;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(102,214,255,.18), transparent 60%),
+                  radial-gradient(900px 600px at 80% 30%, rgba(124,255,178,.10), transparent 55%),
+                  linear-gradient(180deg, var(--bg0), var(--bg2));
+      color: var(--text);
+      overflow-x:hidden;
+    }
+
+    /* Main wrapper */
+    .simulator-page{
+      padding: 28px 0 80px;
+      position: relative;
+    }
+
+    .sim-container{
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero */
+    .sim-hero{
+      padding: 28px 0 18px;
+    }
+    .sim-crumb{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .sim-crumb .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 99px;
+      background: rgba(102,214,255,.55);
+      box-shadow: 0 0 0 6px rgba(102,214,255,.12);
+    }
+    .sim-title{
+      font-size: clamp(30px, 3.3vw, 44px);
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin: 0 0 10px;
+    }
+    .sim-sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 780px;
+    }
+
+    /* Glass cards */
+    .glass{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .glass.soft{
+      background: var(--card2);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 14px 40px rgba(0,0,0,.25);
+      border-radius: var(--radius2);
+    }
+
+    /* Hover micro animation */
+    .lift{
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+    .lift:hover{
+      transform: translateY(-6px);
+      border-color: rgba(102,214,255,.22);
+      background: rgba(255,255,255,.07);
+    }
+
+    /* Section title with icon */
+    .sec-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 18px;
+      padding: 18px 18px 10px;
+    }
+    .sec-head .left{
+      display:flex;
+      align-items:flex-start;
+      gap: 12px;
+    }
+    .sec-head .ico{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      background: rgba(102,214,255,.12);
+      border: 1px solid rgba(102,214,255,.20);
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+    .sec-head h2{
+      margin:0;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .sec-head p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    /* Layout grids */
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      padding: 0 18px 18px;
+    }
+    @media (max-width: 980px){
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    /* Pills (Goal quick select) */
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      padding: 14px 18px 0;
+    }
+    .pill{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--text);
+      cursor:pointer;
+      user-select:none;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .pill:hover{
+      transform: translateY(-2px);
+      border-color: rgba(102,214,255,.22);
+      background: rgba(255,255,255,.08);
+    }
+    .pill.active{
+      border-color: rgba(102,214,255,.32);
+      background: rgba(102,214,255,.12);
+    }
+
+    /* Form */
+    .form{
+      padding: 14px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 740px){
+      .row{ grid-template-columns: 1fr; }
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
+    .label{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .control{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+      transition: border-color .2s ease, background .2s ease;
+      max-width: 100%;
+    }
+    .control:focus-within{
+      border-color: rgba(102,214,255,.32);
+      background: rgba(0,0,0,.24);
+    }
+    .control input,
+    .control select{
+      width: 100%;
+      background: transparent;
+      border: 0;
+      outline: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      min-width: 0;
+    }
+    .control input::placeholder{ color: rgba(255,255,255,.35); }
+    .control .mini{
+      color: rgba(255,255,255,.6);
+      font-size: 12px;
+      font-weight: 800;
+      padding-left: 6px;
+      white-space: nowrap;
+    }
+
+    /* Buttons */
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      font-weight: 800;
+      cursor:pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(102,214,255,.24);
+      background: rgba(255,255,255,.10);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(102,214,255,.28), rgba(124,255,178,.18));
+      border-color: rgba(102,214,255,.28);
+    }
+
+    /* Result banner */
+    .status{
+      padding: 16px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .status-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .15px;
+    }
+    .badge.good{ background: var(--good); color: var(--goodText); border-color: rgba(140,255,208,.22); }
+    .badge.warn{ background: var(--warn); color: var(--warnText); border-color: rgba(255,211,154,.22); }
+    .badge.bad{ background: var(--bad); color: var(--badText); border-color: rgba(255,159,176,.22); }
+
+    .status-desc{
+      color: var(--text);
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .status-note{
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* Summary cards */
+    .sum-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    @media (max-width: 860px){
+      .sum-grid{ grid-template-columns: 1fr; }
+    }
+    .sum-card{
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .sum-card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(102,214,255,.22);
+    }
+    .sum-card .k{
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      display:flex;
+      align-items:center;
+      gap: 8px;
+    }
+    .sum-card .v{
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+
+    /* Advice panel */
+    .advice{
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .advice strong{ font-weight: 900; }
+
+    /* Tiny helper */
+    .tiny{
+      color: var(--muted2);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* Hide blocks */
+    .hidden{ display:none !important; }
+  </style>
+</head>
+
+<body>
+
+<!-- ===========================
+     HEADER (keep as-is)
+     =========================== -->
+<header>
+  <div class="top-bar">
+    <img src="images/logo.png" class="logo" alt="IOTE Logo" />
+
+    <div class="title-box">
+      <div class="title">DEPARTMENT OF IOT AND<br />INFORMATION ENGINEERING</div>
+      <div class="subtitle">King Mongkut's Institute of Technology Ladkrabang</div>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Search..." />
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <nav class="menu">
+    <a href="grade.html">HOME</a>
+    <a href="#">ABOUT IOTE ▼</a>
+
+    <div class="nav-dropdown" id="academicsDropdown">
+      <a href="Academics/index.html" class="nav-dropdown__toggle">ACADEMICS ▼</a>
+      <div class="nav-dropdown__menu" aria-label="Academics submenu">
+        <a href="Academics/index.html?track=iot">1 ปริญญา (IOTE)</a>
+        <a href="Academics/index.html?track=dual">2 ปริญญา (PhysIoT)</a>
+      </div>
+    </div>
+
+    <a href="admission.html">ADMISSION ▼</a>
+    <a href="#">FACULTY ▼</a>
+
+    <div class="nav-dropdown" id="studentServicesDropdown">
+      <a href="#" class="nav-dropdown__toggle active">STUDENT SERVICES ▼</a>
+      <div class="nav-dropdown__menu" aria-label="Student services submenu">
+        <a href="simulator.html">GPA Prediction &amp; Graduation Simulator</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="side-menu" id="menu">
+    <div class="menu-header">
+      <input type="text" placeholder="Search" />
+      <span class="close-btn" onclick="toggleMenu()">✕</span>
+    </div>
+
+    <div class="menu-links">
+      <a href="grade.html">HOME ></a>
+      <a href="#">ABOUT IOTE ></a>
+      <a href="#" class="side-acad-toggle" id="academicsSideToggle">ACADEMICS ></a>
+      <div class="side-submenu" id="sideAcadSub">
+        <a href="Academics/index.html?track=iot">1 ปริญญา (IOTE) ></a>
+        <a href="Academics/index.html?track=dual">2 ปริญญา (PhysIoT) ></a>
+      </div>
+      <a href="#">ADMISSION ></a>
+      <a href="#">FACULTY ></a>
+      <a href="simulator.html">GPA Prediction &amp; Graduation Simulator ></a>
+    </div>
+
+    <div class="menu-footer">
+      DEPARTMENT OF IOT AND<br />
+      INFORMATION ENGINEERING
+    </div>
+  </div>
+</header>
+
+<!-- ===========================
+     SIMULATOR PAGE
+     =========================== -->
+<main class="simulator-page">
+  <div class="sim-container">
+
+    <section class="sim-hero">
+      <div class="sim-crumb">
+        <span class="dot"></span>
+        <span>Student Services</span>
+      </div>
+      <h1 class="sim-title">GPA Prediction &amp; Graduation Simulator</h1>
+      <p class="sim-sub">
+        ระบบคาดการณ์ “เกรดเฉลี่ยที่ต้องทำในหน่วยกิตที่เหลือ” และประเมินสถานะทางวิชาการตามเกณฑ์ที่ตั้งค่าได้
+        (ข้อมูลสามารถดึงต่อจากหน้า Grade Calculator โดยอัตโนมัติ)
+      </p>
+    </section>
+
+    <!-- Main tool card -->
+    <section class="glass">
+      <div class="sec-head">
+        <div class="left">
+          <div class="ico"><i data-lucide="target"></i></div>
+          <div>
+            <h2>Goals &amp; Graduation Tools</h2>
+            <p>ครบทั้ง: (1) ต้องได้เฉลี่ยเท่าไหร่ (2) สถานะ/คำเตือน (3) หน่วยกิตที่เหลือ</p>
+          </div>
+        </div>
+        <div class="tiny" id="syncHint"><i data-lucide="refresh-cw" style="width:14px;height:14px;vertical-align:-2px;"></i> ดึงข้อมูลล่าสุดจากหน้า Grade Calculator</div>
+      </div>
+
+      <!-- Quick goals -->
+      <div class="pill-row" id="goalPills">
+        <div class="pill active" data-goal="notprob" data-target="2.00"><i data-lucide="shield-check"></i> ไม่ติดโปร (≥ 2.00)</div>
+        <div class="pill" data-goal="safe" data-target="2.50"><i data-lucide="sparkles"></i> โหมดปลอดภัย (≥ 2.50)</div>
+        <div class="pill" data-goal="honor2" data-target="3.25"><i data-lucide="award"></i> เกียรตินิยม 2 (≥ 3.25)</div>
+        <div class="pill" data-goal="honor1" data-target="3.50"><i data-lucide="crown"></i> เกียรตินิยม 1 (≥ 3.50)</div>
+        <div class="pill" data-goal="custom"><i data-lucide="sliders-horizontal"></i> กำหนดเอง</div>
+      </div>
+
+      <div class="grid-2">
+        <!-- LEFT: calculator -->
+        <div class="glass soft lift">
+          <div class="sec-head" style="padding-bottom:0;">
+            <div class="left">
+              <div class="ico"><i data-lucide="calculator"></i></div>
+              <div>
+                <h2>คำนวณ “ต้องได้เฉลี่ยเท่าไหร่” ในหน่วยกิตที่เหลือ</h2>
+                <p>ตั้งค่าเป้าหมาย แล้วระบบคำนวณค่าเฉลี่ยที่ต้องทำในหน่วยกิตที่เหลือ</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form">
+            <div class="row">
+              <div class="field">
+                <div class="label"><i data-lucide="graduation-cap" style="width:16px;height:16px;"></i> เลือกหลักสูตร</div>
+                <div class="control">
+                  <select id="program">
+                    <option value="iot">IOTE (1 ปริญญา) — 138 หน่วยกิต</option>
+                    <option value="dual">Dual Degree PhysIoT (2 ปริญญา) — 165 หน่วยกิต</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field" id="dualModeWrap">
+                <div class="label"><i data-lucide="split" style="width:16px;height:16px;"></i> โหมด Dual</div>
+                <div class="control">
+                  <select id="dualMode">
+                    <option value="overall">คิดรวม (GPAX รวม)</option>
+                    <option value="split">คิดแยกคณะ (วิศวะ/วิทยา)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label"><i data-lucide="bar-chart-3" style="width:16px;height:16px;"></i> GPAX ปัจจุบัน</div>
+                <div class="control">
+                  <input id="gpax" type="number" step="0.01" min="0" max="4" placeholder="เช่น 3.00" />
+                  <span class="mini">/4.00</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="label"><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i> หน่วยกิตที่ผ่านแล้ว</div>
+                <div class="control">
+                  <input id="earned" type="number" step="1" min="0" placeholder="เช่น 60" />
+                  <span class="mini">หน่วยกิต</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label"><i data-lucide="layers" style="width:16px;height:16px;"></i> หน่วยกิตทั้งหมดของหลักสูตร</div>
+                <div class="control">
+                  <input id="total" type="number" step="1" min="0" />
+                  <span class="mini">หน่วยกิต</span>
+                </div>
+                <div class="tiny">ระบบจะกำหนดให้อัตโนมัติจาก “หลักสูตร” (แก้เองได้)</div>
+              </div>
+
+              <div class="field">
+                <div class="label"><i data-lucide="goal" style="width:16px;height:16px;"></i> Target GPAX</div>
+                <div class="control">
+                  <input id="target" type="number" step="0.01" min="0" max="4" placeholder="เช่น 2.50" />
+                  <span class="mini">/4.00</span>
+                </div>
+                <div class="tiny">
+                  <label style="display:flex;gap:10px;align-items:center;cursor:pointer;">
+                    <input id="freeTarget" type="checkbox" style="accent-color:#66D6FF;transform:scale(1.05);" />
+                    <span>โหมดกำหนด Target GPAX เอง (กรอกได้อย่างอิสระ)</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Split faculty (Dual only) -->
+            <div id="splitPanel" class="advice hidden">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                <i data-lucide="building-2"></i>
+                <strong>โหมดคิดแยกคณะ (Dual)</strong>
+              </div>
+              <div class="tiny" style="margin-bottom:10px;">
+                หากหน้า Grade Calculator มีข้อมูลรายวิชา ระบบจะพยายามคำนวณแยกให้อัตโนมัติ
+                หากยังไม่มีข้อมูลรายวิชา สามารถกรอกค่าแยกเองเพื่อประเมินได้ทันที
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <div class="label"><i data-lucide="cpu" style="width:16px;height:16px;"></i> GPAX (วิศวะ)</div>
+                  <div class="control">
+                    <input id="engGpax" type="number" step="0.01" min="0" max="4" placeholder="เช่น 3.00" />
+                    <span class="mini">/4.00</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="label"><i data-lucide="flask-conical" style="width:16px;height:16px;"></i> GPAX (วิทยา)</div>
+                  <div class="control">
+                    <input id="sciGpax" type="number" step="0.01" min="0" max="4" placeholder="เช่น 3.00" />
+                    <span class="mini">/4.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thresholds -->
+            <div class="glass soft" style="padding:14px 14px 10px;border-radius:18px;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                <i data-lucide="alert-triangle"></i>
+                <strong>ติดโปร / ไม่ติดโปร (ตั้งค่าเกณฑ์)</strong>
+              </div>
+              <div class="row">
+                <div class="field">
+                  <div class="label">พ้นสภาพ (ต่ำกว่า)</div>
+                  <div class="control">
+                    <input id="thrDismiss" type="number" step="0.01" min="0" max="4" value="1.75"/>
+                    <span class="mini">GPAX</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="label">ติดโปร / เสี่ยงติดโปร (ต่ำกว่า)</div>
+                  <div class="control">
+                    <input id="thrProb" type="number" step="0.01" min="0" max="4" value="2.00"/>
+                    <span class="mini">GPAX</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="field">
+                  <div class="label">โหมดปลอดภัย (แนะนำ ≥)</div>
+                  <div class="control">
+                    <input id="thrSafe" type="number" step="0.01" min="0" max="4" value="2.50"/>
+                    <span class="mini">GPAX</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="label">เกียรตินิยม 2 / 1 (แนะนำ ≥)</div>
+                  <div class="control">
+                    <input id="thrHonor2" type="number" step="0.01" min="0" max="4" value="3.25"/>
+                    <span class="mini">/</span>
+                    <input id="thrHonor1" type="number" step="0.01" min="0" max="4" value="3.50" style="max-width:110px;"/>
+                  </div>
+                </div>
+              </div>
+              <div class="tiny">
+                หมายเหตุ: เกณฑ์อาจแตกต่างตามประกาศคณะ/หลักสูตร โปรดตรวจสอบประกาศล่าสุดของสถาบันและคณะประกอบการพิจารณา
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <button class="btn primary" id="btnCalc"><i data-lucide="play-circle"></i> คำนวณ</button>
+              <button class="btn" id="btnSync"><i data-lucide="refresh-cw"></i> Save/Sync</button>
+              <button class="btn" id="btnClear"><i data-lucide="trash-2"></i> Clear Data</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: credits & quick check -->
+        <div class="glass soft lift">
+          <div class="sec-head" style="padding-bottom:0;">
+            <div class="left">
+              <div class="ico"><i data-lucide="list-check"></i></div>
+              <div>
+                <h2>ตรวจหน่วยกิตที่เหลือ (เร็ว)</h2>
+                <p>สรุปหน่วยกิตทั้งหมด / ผ่านแล้ว / เหลือ พร้อมสถานะคำเตือน</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="status" id="statusBox">
+            <div class="status-top">
+              <span class="badge good" id="statusBadge"><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i> สถานะ: ปกติ</span>
+              <span class="tiny" id="statusUpdate"><i data-lucide="clock" style="width:14px;height:14px;vertical-align:-2px;"></i> อัปเดตจาก GPAX ล่าสุด</span>
+            </div>
+
+            <div class="status-desc" id="statusTitle">สถานะทางวิชาการ: ปกติ</div>
+            <div class="status-note" id="statusText">
+              ผลการเรียนเฉลี่ยสะสมอยู่ในเกณฑ์ตามเกณฑ์ที่ตั้งค่าไว้ โปรดวางแผนการเรียนอย่างต่อเนื่องเพื่อรักษาหรือพัฒนาผลการเรียน
+            </div>
+
+            <div class="sum-grid">
+              <div class="sum-card">
+                <div class="k"><i data-lucide="bar-chart-3" style="width:16px;height:16px;"></i> GPAX ปัจจุบัน</div>
+                <div class="v" id="sumGpax">-</div>
+              </div>
+              <div class="sum-card">
+                <div class="k"><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i> ผ่านแล้ว</div>
+                <div class="v" id="sumEarned">-</div>
+              </div>
+              <div class="sum-card" style="border-color:rgba(255,255,255,.14);">
+                <div class="k"><i data-lucide="trending-up" style="width:16px;height:16px;"></i> ต้องได้เฉลี่ย</div>
+                <div class="v" id="sumNeed">-</div>
+              </div>
+            </div>
+
+            <div class="advice" id="summaryLine" style="margin-top:8px;">
+              <strong>สรุป:</strong> กรุณากด “คำนวณ” เพื่อแสดงผลการคาดการณ์และคำแนะนำ
+            </div>
+
+            <div class="tiny" id="softWarning" style="margin-top:4px;">
+              คำเตือน (เพื่อการวางแผน): ผลลัพธ์เป็นการคำนวณเชิงประมาณการจากข้อมูลที่ผู้ใช้กรอก/ที่ระบบดึงมา
+              ไม่ใช่ผลการประเมินอย่างเป็นทางการ
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+  /* ===========================
+     Header side-menu helper
+     =========================== */
+  function toggleMenu() {
+    const el = document.getElementById("menu");
+    if (!el) return;
+    el.classList.toggle("open");
+  }
+
+  // Side submenu (optional if your style.js already handles)
+  (function(){
+    const t = document.getElementById('academicsSideToggle');
+    const sub = document.getElementById('sideAcadSub');
+    if(t && sub){
+      t.addEventListener('click', (e)=>{
+        e.preventDefault();
+        sub.classList.toggle('open');
+      });
+    }
+  })();
+
+  /* ===========================
+     Simulator logic
+     =========================== */
+  const $ = (id)=>document.getElementById(id);
+
+  const program = $('program');
+  const dualModeWrap = $('dualModeWrap');
+  const dualMode = $('dualMode');
+  const splitPanel = $('splitPanel');
+
+  const gpax = $('gpax');
+  const earned = $('earned');
+  const total = $('total');
+  const target = $('target');
+  const freeTarget = $('freeTarget');
+
+  const thrDismiss = $('thrDismiss');
+  const thrProb = $('thrProb');
+  const thrSafe = $('thrSafe');
+  const thrHonor2 = $('thrHonor2');
+  const thrHonor1 = $('thrHonor1');
+
+  const btnCalc = $('btnCalc');
+  const btnSync = $('btnSync');
+  const btnClear = $('btnClear');
+
+  const statusBadge = $('statusBadge');
+  const statusTitle = $('statusTitle');
+  const statusText = $('statusText');
+  const sumGpax = $('sumGpax');
+  const sumEarned = $('sumEarned');
+  const sumNeed = $('sumNeed');
+  const summaryLine = $('summaryLine');
+
+  const goalPills = $('goalPills');
+
+  // LocalStorage keys (safe defaults)
+  const KEY = {
+    gpax: 'iote_gpax',
+    earned: 'iote_earned',
+    total: 'iote_total',
+    program: 'iote_program',
+    dualMode: 'iote_dualMode',
+    target: 'iote_target',
+    thresholds: 'iote_thresholds',
+    // optional: if Grade Calculator stores courses list
+    courses: 'iote_courses'
+  };
+
+  function num(v){
+    const n = parseFloat(v);
+    return Number.isFinite(n) ? n : null;
+  }
+  function int(v){
+    const n = parseInt(v,10);
+    return Number.isFinite(n) ? n : null;
+  }
+  function clamp(n, a, b){ return Math.min(b, Math.max(a, n)); }
+  function fmt2(n){
+    if(!Number.isFinite(n)) return '-';
+    return (Math.round(n*100)/100).toFixed(2);
+  }
+
+  function setProgramDefaults(){
+    const isDual = program.value === 'dual';
+    dualModeWrap.classList.toggle('hidden', !isDual);
+
+    // total credits default
+    if(isDual){
+      if(!int(total.value)) total.value = 165;
+      else if (int(total.value) === 138) total.value = 165;
+    }else{
+      if(!int(total.value)) total.value = 138;
+      else if (int(total.value) === 165) total.value = 138;
+      dualMode.value = 'overall';
+      splitPanel.classList.add('hidden');
+    }
+    setDualModeUI();
+  }
+
+  function setDualModeUI(){
+    const isDual = program.value === 'dual';
+    const isSplit = isDual && dualMode.value === 'split';
+    splitPanel.classList.toggle('hidden', !isSplit);
+  }
+
+  function setPillActive(goal){
+    [...goalPills.querySelectorAll('.pill')].forEach(p=>{
+      p.classList.toggle('active', p.dataset.goal === goal);
+    });
+  }
+
+  function applyGoalFromPill(pill){
+    const g = pill.dataset.goal;
+    setPillActive(g);
+
+    if(g === 'custom'){
+      freeTarget.checked = true;
+      target.removeAttribute('readonly');
+      target.focus();
+      return;
+    }
+
+    const t = num(pill.dataset.target);
+    if(t != null){
+      // if freeTarget is OFF -> lock to goal
+      if(!freeTarget.checked){
+        target.value = t.toFixed(2);
+        target.setAttribute('readonly','readonly');
+      }else{
+        // free target ON -> still set as suggestion but editable
+        target.value = t.toFixed(2);
+        target.removeAttribute('readonly');
+      }
+    }
+  }
+
+  function setTargetReadonly(){
+    if(freeTarget.checked){
+      target.removeAttribute('readonly');
+      setPillActive('custom'); // reflect “custom mode”
+    }else{
+      // if some non-custom pill active, lock to it
+      const active = goalPills.querySelector('.pill.active');
+      if(active && active.dataset.goal !== 'custom' && active.dataset.target){
+        target.value = parseFloat(active.dataset.target).toFixed(2);
+      }
+      target.setAttribute('readonly','readonly');
+    }
+  }
+
+  // Status classification (requested)
+  function classifyStatus(g, th){
+    // th: {dismiss, prob, safe, honor2, honor1}
+    if(g == null) return {type:'warn', label:'ข้อมูลไม่ครบ', title:'กรุณากรอกข้อมูลให้ครบ', text:'กรุณาระบุ GPAX และหน่วยกิต เพื่อให้ระบบคำนวณและประเมินสถานะได้อย่างถูกต้อง'};
+    if(g < th.dismiss){
+      return {
+        type:'bad',
+        label:'พ้นสภาพ',
+        title:'สถานะทางวิชาการ: พ้นสภาพ (ต่ำกว่าเกณฑ์)',
+        text:'ผลการเรียนเฉลี่ยสะสมต่ำกว่าเกณฑ์ที่ตั้งไว้ โปรดติดต่ออาจารย์ที่ปรึกษา/งานทะเบียนเพื่อแนวทางที่เหมาะสมโดยเร็ว'
+      };
+    }
+    if(g < th.prob){
+      return {
+        type:'warn',
+        label:'เสี่ยงติดโปร',
+        title:'สถานะทางวิชาการ: เสี่ยงติดโปร',
+        text:'ผลการเรียนเฉลี่ยสะสมอยู่ต่ำกว่าเกณฑ์ “ไม่ติดโปร” ตามที่ตั้งค่าไว้ แนะนำให้วางแผนปรับปรุงผลการเรียนในภาคถัดไป และติดตามประกาศเกณฑ์ของคณะ/หลักสูตร'
+      };
+    }
+    // Above probation threshold
+    if(g >= th.honor1){
+      return {
+        type:'good',
+        label:'เกียรตินิยม 1',
+        title:'สถานะทางวิชาการ: เกียรตินิยมอันดับ 1',
+        text:'ผลการเรียนเฉลี่ยสะสมอยู่ในช่วงเกียรตินิยมอันดับ 1 ตามเกณฑ์ที่ตั้งค่าไว้ โปรดรักษาความสม่ำเสมอของผลการเรียนและตรวจสอบเงื่อนไขประกอบของสถาบัน/คณะ'
+      };
+    }
+    if(g >= th.honor2){
+      return {
+        type:'good',
+        label:'เกียรตินิยม 2',
+        title:'สถานะทางวิชาการ: เกียรตินิยมอันดับ 2',
+        text:'ผลการเรียนเฉลี่ยสะสมอยู่ในช่วงเกียรตินิยมอันดับ 2 ตามเกณฑ์ที่ตั้งค่าไว้ แนะนำให้รักษาความสม่ำเสมอ และตรวจสอบเงื่อนไขประกอบของสถาบัน/คณะ'
+      };
+    }
+    if(g >= th.safe){
+      return {
+        type:'good',
+        label:'ปกติ',
+        title:'สถานะทางวิชาการ: ปกติ',
+        text:'ผลการเรียนเฉลี่ยสะสมอยู่ในเกณฑ์ที่เหมาะสมตามเกณฑ์ที่ตั้งค่าไว้ โปรดวางแผนการเรียนอย่างต่อเนื่องเพื่อรักษาหรือพัฒนาผลการเรียน'
+      };
+    }
+    // Between prob and safe
+    return {
+      type:'warn',
+      label:'ติดโปร/ใกล้โปร',
+      title:'สถานะทางวิชาการ: ติดโปร (ตามเกณฑ์ที่ตั้งค่า)',
+      text:'ผลการเรียนเฉลี่ยสะสมเพิ่งผ่านเกณฑ์ขั้นต่ำหรืออยู่ใกล้ช่วงเสี่ยง แนะนำให้ตั้งเป้าหมาย “โหมดปลอดภัย” และติดตามผลทุกภาคการศึกษา'
+    };
+  }
+
+  function renderStatus(st){
+    statusBadge.classList.remove('good','warn','bad');
+    statusBadge.classList.add(st.type);
+
+    const icon = (st.type === 'good') ? 'check-circle-2' : (st.type === 'warn') ? 'alert-triangle' : 'x-circle';
+    statusBadge.innerHTML = `<i data-lucide="${icon}" style="width:16px;height:16px;"></i> สถานะ: ${st.label}`;
+
+    statusTitle.textContent = st.title;
+    statusText.textContent = st.text;
+
+    // re-render icons
+    if(window.lucide) lucide.createIcons();
+  }
+
+  function calcRequiredAvg(g, e, t, tot){
+    const rem = tot - e;
+    if(rem <= 0) return {rem, need: null};
+    const need = ((t*tot) - (g*e)) / rem;
+    return {rem, need};
+  }
+
+  function makeSummaryText(data){
+    const {g, e, tot, rem, t, need} = data;
+
+    if(g == null || e == null || tot == null || t == null){
+      return 'กรุณากรอกข้อมูลให้ครบเพื่อแสดงผลการคาดการณ์และคำแนะนำ';
+    }
+
+    if(rem <= 0){
+      return `สรุป: หน่วยกิตครบแล้ว (ทั้งหมด ${tot} หน่วยกิต) — หากต้องการประเมินเพิ่มเติม โปรดตรวจสอบข้อมูลหน่วยกิตอีกครั้ง`;
+    }
+
+    if(need == null || !Number.isFinite(need)){
+      return 'สรุป: ไม่สามารถคำนวณได้ โปรดตรวจสอบค่า GPAX/หน่วยกิต';
+    }
+
+    // formal-soft warning text
+    if(need > 4.0){
+      return `สรุป: เป้าหมาย Target GPAX = ${fmt2(t)} อาจทำได้ยากในหน่วยกิตที่เหลือ (${rem} หน่วยกิต) เพราะต้องได้เฉลี่ยประมาณ ${fmt2(need)} (มากกว่า 4.00) — แนะนำพิจารณาปรับเป้าหมาย/วางแผนรายวิชาอย่างรอบคอบ`;
+    }
+    if(need < 0){
+      return `สรุป: เป้าหมาย Target GPAX = ${fmt2(t)} อยู่ในช่วงที่รักษาได้ (หน่วยกิตที่เหลือ ${rem}) — โปรดรักษามาตรฐานผลการเรียนอย่างต่อเนื่อง`;
+    }
+    return `สรุป: GPAX ปัจจุบัน ${fmt2(g)} | ผ่านแล้ว ${e}/${tot} | เหลือ ${rem} หน่วยกิต | Target GPAX = ${fmt2(t)} → ต้องทำ “เกรดเฉลี่ยในหน่วยกิตที่เหลือ” ≈ ${fmt2(need)}`;
+  }
+
+  function syncFromStorage(){
+    try{
+      const p = localStorage.getItem(KEY.program);
+      if(p) program.value = p;
+
+      const dm = localStorage.getItem(KEY.dualMode);
+      if(dm) dualMode.value = dm;
+
+      const vGpax = localStorage.getItem(KEY.gpax);
+      const vEarned = localStorage.getItem(KEY.earned);
+      const vTotal = localStorage.getItem(KEY.total);
+      const vTarget = localStorage.getItem(KEY.target);
+
+      if(vGpax !== null) gpax.value = vGpax;
+      if(vEarned !== null) earned.value = vEarned;
+      if(vTotal !== null) total.value = vTotal;
+      if(vTarget !== null) target.value = vTarget;
+
+      const th = localStorage.getItem(KEY.thresholds);
+      if(th){
+        const o = JSON.parse(th);
+        if(o.dismiss != null) thrDismiss.value = o.dismiss;
+        if(o.prob != null) thrProb.value = o.prob;
+        if(o.safe != null) thrSafe.value = o.safe;
+        if(o.honor2 != null) thrHonor2.value = o.honor2;
+        if(o.honor1 != null) thrHonor1.value = o.honor1;
+      }
+    }catch(e){}
+  }
+
+  function saveToStorage(){
+    try{
+      localStorage.setItem(KEY.program, program.value);
+      localStorage.setItem(KEY.dualMode, dualMode.value);
+
+      localStorage.setItem(KEY.gpax, gpax.value || '');
+      localStorage.setItem(KEY.earned, earned.value || '');
+      localStorage.setItem(KEY.total, total.value || '');
+      localStorage.setItem(KEY.target, target.value || '');
+
+      const th = {
+        dismiss: num(thrDismiss.value),
+        prob: num(thrProb.value),
+        safe: num(thrSafe.value),
+        honor2: num(thrHonor2.value),
+        honor1: num(thrHonor1.value)
+      };
+      localStorage.setItem(KEY.thresholds, JSON.stringify(th));
+    }catch(e){}
+  }
+
+  function tryAutoSplitFromCourses(){
+    // Optional: if grade calculator stored course list with faculty tags
+    // If not found, user can enter eng/sci GPAX manually.
+    try{
+      const raw = localStorage.getItem(KEY.courses);
+      if(!raw) return false;
+      const courses = JSON.parse(raw);
+      if(!Array.isArray(courses) || courses.length === 0) return false;
+
+      // Expected shape (example): {credit:3, gradePoint:4.0, faculty:"eng"|"sci"}
+      // If no faculty tag, skip auto.
+      let engPts=0, engCr=0, sciPts=0, sciCr=0;
+      for(const c of courses){
+        const cr = Number(c.credit);
+        const gp = Number(c.gradePoint);
+        const fac = (c.faculty || '').toLowerCase();
+        if(!Number.isFinite(cr) || !Number.isFinite(gp)) continue;
+        if(fac === 'eng'){
+          engPts += gp*cr; engCr += cr;
+        }else if(fac === 'sci'){
+          sciPts += gp*cr; sciCr += cr;
+        }
+      }
+      if(engCr > 0) $('engGpax').value = (engPts/engCr).toFixed(2);
+      if(sciCr > 0) $('sciGpax').value = (sciPts/sciCr).toFixed(2);
+
+      return (engCr>0 || sciCr>0);
+    }catch(e){
+      return false;
+    }
+  }
+
+  function calcAndRender(){
+    const g = num(gpax.value);
+    const e = int(earned.value);
+    const tot = int(total.value);
+    const t = num(target.value);
+
+    const th = {
+      dismiss: num(thrDismiss.value) ?? 1.75,
+      prob: num(thrProb.value) ?? 2.00,
+      safe: num(thrSafe.value) ?? 2.50,
+      honor2: num(thrHonor2.value) ?? 3.25,
+      honor1: num(thrHonor1.value) ?? 3.50
+    };
+
+    // Compute required average
+    let rem = null, need = null;
+    if(g != null && e != null && tot != null && t != null){
+      const out = calcRequiredAvg(g, e, t, tot);
+      rem = out.rem;
+      need = out.need;
+    }
+
+    // Render summary values
+    sumGpax.textContent = (g == null) ? '-' : fmt2(g);
+    sumEarned.textContent = (e == null) ? '-' : String(e);
+    sumNeed.textContent = (need == null) ? '-' : fmt2(need);
+
+    // Status
+    const st = classifyStatus(g, th);
+    renderStatus(st);
+
+    // Summary line
+    summaryLine.innerHTML = `<strong>สรุป:</strong> ${makeSummaryText({g,e,tot,rem,t,need})}`;
+
+    // If split mode, try auto-fill once
+    if(program.value === 'dual' && dualMode.value === 'split'){
+      tryAutoSplitFromCourses();
+    }
+
+    saveToStorage();
+  }
+
+  /* ===========================
+     Events
+     =========================== */
+  program.addEventListener('change', ()=>{
+    setProgramDefaults();
+    saveToStorage();
+    calcAndRender();
+  });
+
+  dualMode.addEventListener('change', ()=>{
+    setDualModeUI();
+    saveToStorage();
+    calcAndRender();
+  });
+
+  freeTarget.addEventListener('change', ()=>{
+    setTargetReadonly();
+    saveToStorage();
+  });
+
+  goalPills.addEventListener('click', (e)=>{
+    const pill = e.target.closest('.pill');
+    if(!pill) return;
+    applyGoalFromPill(pill);
+    saveToStorage();
+    calcAndRender();
+  });
+
+  btnCalc.addEventListener('click', calcAndRender);
+
+  btnSync.addEventListener('click', ()=>{
+    saveToStorage();
+    calcAndRender();
+  });
+
+  btnClear.addEventListener('click', ()=>{
+    if(!confirm('ต้องการล้างข้อมูลหน้านี้ใช่หรือไม่?')) return;
+    try{
+      localStorage.removeItem(KEY.gpax);
+      localStorage.removeItem(KEY.earned);
+      localStorage.removeItem(KEY.total);
+      localStorage.removeItem(KEY.program);
+      localStorage.removeItem(KEY.dualMode);
+      localStorage.removeItem(KEY.target);
+      localStorage.removeItem(KEY.thresholds);
+    }catch(e){}
+    location.reload();
+  });
+
+  // init
+  (function init(){
+    // icons
+    if(window.lucide) lucide.createIcons();
+
+    // sync stored values
+    syncFromStorage();
+
+    // defaults
+    setProgramDefaults();
+
+    // pill default
+    const active = goalPills.querySelector('.pill.active');
+    if(active) applyGoalFromPill(active);
+
+    // target readonly according to toggle
+    setTargetReadonly();
+
+    // If no stored numbers, set demo-like placeholders (NOT using your real grades)
+    if(!gpax.value) gpax.placeholder = 'เช่น 3.00';
+    if(!earned.value) earned.placeholder = 'เช่น 60';
+    if(!target.value) target.value = '2.00';
+
+    // render
+    calcAndRender();
+  })();
+</script>
+
+</body>
+</html>

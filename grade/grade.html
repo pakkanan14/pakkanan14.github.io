@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academics | IOTE Department</title>
+  <link rel="stylesheet" href="../simulator.css" />
+  <link rel="stylesheet" href="../css/academics.css" />
+</head>
+<body class="academics-page">
+
+  <!-- Header (from grade.html, adjusted paths) -->
+  <header>
+    <div class="top-bar">
+      <img src="../images/logo.png" class="logo" alt="IOTE Logo" />
+
+      <div class="title-box">
+        <div class="title">DEPARTMENT OF IOT AND<br />INFORMATION ENGINEERING</div>
+        <div class="subtitle">King Mongkut's Institute of Technology Ladkrabang</div>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search..." />
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+
+    <nav class="menu">
+      <a href="../grade.html">HOME</a>
+      <a href="#" data-nav="about">ABOUT IOTE ▼</a>
+
+      <div class="nav-dropdown" id="academicsDropdown">
+        <a href="index.html" class="nav-dropdown__toggle active">ACADEMICS ▼</a>
+        <div class="nav-dropdown__menu" aria-label="Academics submenu">
+          <a href="index.html?track=iot">1 ปริญญา (IOTE)</a>
+          <a href="index.html?track=dual">2 ปริญญา (PhysIoT)</a>
+        </div>
+      </div>
+
+     <div class="nav-dropdown">
+  <a href="#" class="nav-dropdown__toggle">ADMISSION ▼</a>
+  <div class="nav-dropdown__menu">
+    <a href="#" data-nav="../admission/admis.html">Admission</a>
+    <a href="#" data-nav="../admission/Portfolio.html">Portfolio</a>
+    <a href="#" data-nav="../admission/Quota.html">Quota</a>
+  </div>
+</div>
+      <a href="#" data-nav="faculty">FACULTY ▼</a>
+      <div class="nav-dropdown" id="studentServicesDropdown">
+        <a href="#" class="nav-dropdown__toggle">STUDENT SERVICES ▼</a>
+        <div class="nav-dropdown__menu" aria-label="Student services submenu">
+          <a href="../simulator.html">GPA Prediction &amp; Graduation Simulator</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="side-menu" id="menu">
+      <div class="menu-header">
+        <input type="text" placeholder="Search" />
+        <span class="close-btn" onclick="toggleMenu()">✕</span>
+      </div>
+
+      <div class="menu-links">
+        <a href="../grade.html">HOME ></a>
+        <a href="#">ABOUT IOTE ></a>
+        <a href="#" class="side-acad-toggle" id="academicsSideToggle">ACADEMICS ></a>
+        <div class="side-submenu" id="sideAcadSub">
+          <a href="index.html?track=iot">1 ปริญญา (IOTE) ></a>
+          <a href="index.html?track=dual">2 ปริญญา (PhysIoT) ></a>
+        </div>
+        <a href="../admission/admission.html">ADMISSION ></a>
+        <a href="#">FACULTY ></a>
+        <a href="../simulator.html">GPA Prediction &amp; Graduation Simulator ></a>
+      </div>
+
+      <div class="menu-footer">
+        DEPARTMENT OF IOT AND<br />
+        INFORMATION ENGINEERING
+      </div>
+    </div>
+  </header>
