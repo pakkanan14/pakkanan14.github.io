@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IOTE Department</title>
+<link rel="stylesheet" href="../css/1main.css">
+<link rel="stylesheet" href="../student-services/function.css">
+</head>
+
+
+<body>
+
+<header>
+    <div class="top-bar">
+        <img src="images/logo.png" class="logo">
+
+        <div class="title-box">
+            <div class="title">
+                DEPARTMENT OF IOT AND<br>
+                INFORMATION ENGINEERING
+            </div>
+            <div class="subtitle">
+                King Mongkut's Institute of Technology Ladkrabang
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            🔍
+        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  <!-- Navigation bar -->
+    <!-- Side Menu Overlay -->
+    <nav class="menu">
+        <a href="../1index.html">HOME</a>
+        <a href="../2about.html">ABOUT IOTE</a>
+        <a href="../3academics.html">ACADEMICS ▼</a>
+        <a href="../4admission.html">ADMISSION ▼</a>
+        <a href="../5faculty.html">FACULTY ▼</a>
+    
+    <div class="dropdown-wrap">
+        <a href="#" onclick="toggleDropdown(event)">STUDENT SERVICES ▼</a>
+    <div class="dropdown-menu" id="studentDropdown">
+        <a href="../student-services/function1.html">GPA Calculator</a>
+        <a href="../student-services/function2.html">Function 2</a>
+        <a href="../student-services/function3.html" class="active">Function 3</a>
+    </div>
+</div>
+</div>
+    </nav>
+ <div class="side-menu" id="menu">
+
+    <div class="menu-header">
+        <input type="text" placeholder="Search">
+        <span class="close-btn" onclick="toggleMenu()">✕</span>
+    </div>
+
+    <div class="menu-links">
+        <a href="../1index.html">HOME</a>
+        <a href="../2about.html">ABOUT IOTE</a>
+        <a href="../3academics.html">ACADEMICS ▼</a>
+        <a href="../4admission.html">ADMISSION ▼</a>
+        <a href="../5faculty.html">FACULTY ▼</a>
+
+        <!-- STUDENT SERVICES + submenu -->
+        <a href="#" onclick="toggleSubMenu(event)">STUDENT SERVICES ▼</a>
+        <div class="sub-menu" id="subMenu">
+            <a href="../student-services/function1.html">GPA Calculator</a>
+            <a href="../student-services/function2.html">Function 2</a>
+            <a href="../student-services/function3.html" class="active">Function 3</a>
+        </div>
+
+    </div>
+
+    <div class="menu-footer">
+        DEPARTMENT OF IOT AND<br>
+        INFORMATION ENGINEERING
+    </div>
+    
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+</script>
+
+<script>
+    // เปลี่ยน active ของเมนู
+    document.querySelectorAll('.menu a, .menu .dropdown').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.menu .active').forEach(el => {
+                el.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+</script>
+
+</div>
+</header>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About IoTE - KMITL</title>
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/1main.css">
+  <link rel="stylesheet" href="css/2about.css">
+</head>
+
+<body>
+
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Navigation icons -->
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </symbol>
+    <symbol id="i-chevdown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9" />
+    </symbol>
+    <symbol id="i-chevleft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </symbol>
+    <symbol id="i-chevright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6" />
+    </symbol>
+    <!-- Card header icons -->
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="7" width="20" height="14" rx="2" />
+      <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </symbol>
+    <symbol id="i-atom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <circle cx="12" cy="12" r="2" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+    </symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <rect x="7" y="7" width="10" height="10" rx="1" />
+      <path d="M7 9H4M7 12H4M7 15H4M17 9h3M17 12h3M17 15h3M9 7V4M12 7V4M15 7V4M9 17v3M12 17v3M15 17v3" />
+    </symbol>
+    <symbol id="i-cert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <circle cx="12" cy="8" r="6" />
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <polygon
+        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </symbol>
+    <!-- Career icons -->
+    <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+      <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+      <circle cx="12" cy="20" r="1" fill="currentColor" />
+    </symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+      <line x1="12" y1="17" x2="12" y2="21" />
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10" />
+      <line x1="12" y1="20" x2="12" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="14" />
+    </symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+    </symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <rect x="4" y="4" width="16" height="16" rx="2" />
+      <rect x="9" y="9" width="6" height="6" />
+      <line x1="9" y1="1" x2="9" y2="4" />
+      <line x1="15" y1="1" x2="15" y2="4" />
+      <line x1="9" y1="20" x2="9" y2="23" />
+      <line x1="15" y1="20" x2="15" y2="23" />
+      <line x1="20" y1="9" x2="23" y2="9" />
+      <line x1="20" y1="14" x2="23" y2="14" />
+      <line x1="1" y1="9" x2="4" y2="9" />
+      <line x1="1" y1="14" x2="4" y2="14" />
+    </symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2" />
+      <line x1="12" y1="18" x2="12.01" y2="18" />
+    </symbol>
+    <symbol id="i-check-sq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 11 12 14 22 4" />
+      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+    </symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M9 3h6" />
+      <path d="M10 3v7.5L6.2 18.4A1 1 0 0 0 7 20h10a1 1 0 0 0 .8-1.6L14 10.5V3" />
+    </symbol>
+    <symbol id="i-grad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+      <path d="M6 12v5c3 3 9 3 12 0v-5" />
+    </symbol>
+    <symbol id="i-rd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      <line x1="11" y1="8" x2="11" y2="14" />
+      <line x1="8" y1="11" x2="14" y2="11" />
+    </symbol>
+    <symbol id="i-gears" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path
+        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
+    </symbol>
+    <symbol id="i-gem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <polygon points="6 3 18 3 22 9 12 22 2 9" />
+      <line x1="2" y1="9" x2="22" y2="9" />
+      <line x1="12" y1="3" x2="6" y2="9" />
+      <line x1="12" y1="3" x2="18" y2="9" />
+    </symbol>
+    <symbol id="i-microscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 18h8" />
+      <path d="M3 22h18" />
+      <path d="M14 22a7 7 0 1 0 0-14h-1" />
+      <path d="M9 14h2" />
+      <path d="M9 12a2 2 0 0 1-2-2V6l2-2 2 2v4a2 2 0 0 1-2 2z" />
+      <path d="M12 6h3v4" />
+    </symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" />
+      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+    </symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <line x1="9" y1="18" x2="15" y2="18" />
+      <line x1="10" y1="22" x2="14" y2="22" />
+      <path
+        d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
+    </symbol>
+  </svg>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+     [HTML] NAVBAR — แถบนำทางบนสุด
+     ════════════════════════════════════════════════════════════ -->
+
+   <div id="header"></div>
+
+    <script>
+        fetch("header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+    </script>
+
+
+
+    <!-- ════════════════════════════════════════════════════════════
+     [HTML] TAB BAR — ปุ่มเลือกหลักสูตร
+     3 ปุ่ม: IoT | Dual Degree | Industrial Physics
+     เมื่อกดจะเรียก switchTab() ใน JavaScript
+     ════════════════════════════════════════════════════════════ -->
+    <div class="tab-area">
+      <div style="max-width:1400px;margin:0 auto;">
+        <div class="tab-bar">
+          <!-- Tab 1: IoT System and Information (default active) -->
+          <button class="tab-btn active" onclick="switchTab('iot',this)">IoT System and Information</button>
+          <!-- Tab 2: Dual Degree / PhysIoT -->
+          <button class="tab-btn" onclick="switchTab('dual',this)">Dual Degree</button>
+          <!-- Tab 3: Industrial Physics -->
+          <button class="tab-btn" onclick="switchTab('physics',this)">Industrial Physics</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section active" id="tab-iot">
+
+      <!-- Hero: ชื่อหลักสูตร + Why Choose Us -->
+      <div class="hero">
+        <div class="hero-inner">
+          <div class="hero-badge"><svg width="13" height="13">
+              <use href="#i-chip" />
+            </svg> วิศวกรรมศาสตรบัณฑิต · วศ.บ.</div>
+          <div class="hero-layout">
+            <div>
+              <h2>วิศวกรรมระบบไอโอที<br>และสารสนเทศ</h2>
+              <div class="subtitle">IoT System and Information Engineering</div>
+              <p class="hero-desc">ในโลกยุค Digital 4.0 เทคโนโลยีไม่ได้หยุดอยู่แค่การสื่อสารระหว่างคน
+                แต่ก้าวไปสู่การเชื่อมต่อระหว่าง "สรรพสิ่ง" (IoT) เครื่องจักร และระบบอัจฉริยะ หลักสูตรนี้ผสาน Smart
+                Sensor, เครือข่ายสื่อสาร, Data Science และ AI เพื่อผลิตวิศวกรนวัตกรรมแห่งอนาคต</p>
+            </div>
+            <div>
+              <div class="hero-right-label">Why Choose Us?</div>
+              <div class="pill-list">
+                <div class="pill">ตอบโจทย์อุตสาหกรรมเป้าหมาย New S-Curve</div>
+                <div class="pill">สอดคล้องแผนพัฒนาเศรษฐกิจฯ และนโยบาย EEC</div>
+                <div class="pill">รองรับเทคโนโลยี Disruption และโลกยุคใหม่</div>
+                <div class="pill">เน้นสร้างนวัตกรและผู้ประกอบการ Tech Startup</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- เนื้อหา: Curriculum + Career Paths -->
+      <div class="page-wrap" style="padding-top:24px">
+        <div class="two-col">
+          <!-- การ์ด: Curriculum & Core Skills -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-book" />
+                </svg></div>
+              <h3>Curriculum & Core Skills</h3>
+            </div>
+            <div class="c-item">
+              <div class="c-title">IoT & Smart Sensor</div>
+              <div class="c-desc">สมาร์ทเซ็นเซอร์, เครือข่าย IoT และระบบเชื่อมต่ออัจฉริยะสำหรับโลกอุตสาหกรรม</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Data Science & AI</div>
+              <div class="c-desc">วิทยาการข้อมูล, ปัญญาประดิษฐ์ และ Machine Learning เพื่อการตัดสินใจอัจฉริยะ</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Software & Web Development</div>
+              <div class="c-desc">พัฒนา Web Application และ Mobile App เพื่อควบคุมและแสดงผลระบบ IoT</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Cybersecurity</div>
+              <div class="c-desc">ความมั่นคงปลอดภัยทางไซเบอร์สำหรับระบบสารสนเทศและ IoT Infrastructure</div>
+            </div>
+          </div>
+          <!-- การ์ด: Career Paths (6 อาชีพ — 3 คอลัมน์) -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-briefcase" />
+                </svg></div>
+              <h3>Career Paths</h3>
+            </div>
+            <div class="career-grid">
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-wifi" />
+                  </svg></div><span class="cc-title">IoT Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-monitor" />
+                  </svg></div><span class="cc-title">Software Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-shield" />
+                  </svg></div><span class="cc-title">Cybersecurity Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-chart" />
+                  </svg></div><span class="cc-title">Data Scientist</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-cloud" />
+                  </svg></div><span class="cc-title">Cloud Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-rocket" />
+                  </svg></div><span class="cc-title">Tech Startup</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- การ์ดเต็มความกว้าง: ประวัติหลักสูตร (Timeline) -->
+        <div class="card full-col">
+          <div class="card-header">
+            <div class="card-icon"><svg width="19" height="19" color="white">
+                <use href="#i-clock" />
+              </svg></div>
+            <h3>ประวัติหลักสูตร</h3>
+          </div>
+          <div class="timeline">
+            <div class="tl-grid">
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">พ.ศ. 2517 – 2541</div>
+                <div class="tl-text">ก่อตั้ง "ภาควิชาเทคนิคอุตสาหกรรม"
+                  เน้นผลิตบัณฑิตสายปฏิบัติการและขยายสู่ระดับปริญญาตรี</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">พ.ศ. 2544</div>
+                <div class="tl-text">ปรับเปลี่ยนเป็น "ภาควิชาวิศวกรรมสารสนเทศ" รองรับการเติบโตของโลกไอทีและโทรคมนาคม
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">พ.ศ. 2553</div>
+                <div class="tl-text">ผนึกกำลังร่วมกับภาควิชาวิศวกรรมคอมพิวเตอร์ เพื่อความแข็งแกร่งด้านเทคโนโลยี</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">พ.ศ. 2564 – ปัจจุบัน</div>
+                <div class="tl-text">พลิกโฉมสู่ "วิศวกรรมระบบไอโอทีและสารสนเทศ" พร้อมเปิด Dual Degree
+                  ร่วมกับคณะวิทยาศาสตร์</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- END Tab 1: IoT System and Information -->
+
+
+    <!-- ════════════════════════════════════════════════════════════
+     [HTML] TAB 2 — Dual Degree / PhysIoT
+     หลักสูตร: เรียน 4 ปี ควบ 2 ปริญญา
+                · วศ.บ. วิศวกรรมระบบ IoT และสารสนเทศ
+                · วท.บ. ฟิสิกส์อุตสาหกรรม
+     บูรณาการ: คณะวิศวกรรมศาสตร์ + คณะวิทยาศาสตร์ KMITL
+     ════════════════════════════════════════════════════════════ -->
+    <div class="content-section" id="tab-dual">
+
+      <!-- Hero: ชื่อ PhysIoT + จุดเด่น -->
+      <div class="hero">
+        <div class="hero-inner">
+          <div class="hero-badge"><svg width="13" height="13">
+              <use href="#i-cert" />
+            </svg> เรียน 4 ปี ควบ 2 ปริญญา</div>
+          <div class="hero-layout">
+            <div>
+              <h2>PhysIoT Dual Degree</h2>
+              <div class="subtitle">B.Eng. IoT System and Information + B.Sc. Industrial Physics</div>
+              <p class="hero-desc">ในยุค Disruption หลักสูตร PhysIoT ทลายกำแพงระหว่างคณะ ผสาน "วิศวกรรมศาสตร์" และ
+                "วิทยาศาสตร์" สร้างบัณฑิตที่มีทักษะดิจิทัลและฟิสิกส์อย่างครบครัน ขับเคลื่อน New S-Curve และ Thailand 4.0
+              </p>
+            </div>
+            <div>
+              <div class="hero-right-label">จุดเด่นของหลักสูตร</div>
+              <div class="pill-list">
+                <div class="pill">ได้รับ 2 ปริญญาภายใน 4 ปี</div>
+                <div class="pill">บูรณาการ 2 คณะ วิศวกรรมฯ + วิทยาศาสตร์</div>
+                <div class="pill">ตอบโจทย์อุตสาหกรรม New S-Curve</div>
+                <div class="pill">ทักษะวิจัยและพัฒนา R&amp;D</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- เนื้อหา -->
+      <div class="page-wrap" style="padding-top:24px">
+
+        <!-- Carousel รูปภาพ (ควบคุมโดย JavaScript) -->
+        <div class="full-col">
+          <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+
+
+              <div class="carousel-slide">
+                <img src="images/student-activity.jpg" alt="กิจกรรมนักศึกษา">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/graduation.jpg" alt="พิธีรับปริญญา">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/lab.jpg" alt="ห้องปฏิบัติการ">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/all.jpg" alt="ถ่ายภาพหมู่iot">
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)"><svg width="18" height="18" color="white">
+                <use href="#i-chevleft" />
+              </svg></button>
+            <button class="carousel-btn next" onclick="moveCarousel(1)"><svg width="18" height="18" color="white">
+                <use href="#i-chevright" />
+              </svg></button>
+          </div>
+          <!-- Dot navigation (4 จุด = 4 สไลด์) -->
+          <div class="carousel-dots" id="carouselDots" style="margin-top:10px">
+            <div class="cdot active" onclick="goToSlide(0)"></div>
+            <div class="cdot" onclick="goToSlide(1)"></div>
+            <div class="cdot" onclick="goToSlide(2)"></div>
+            <div class="cdot" onclick="goToSlide(3)"></div>
+          </div>
+        </div>
+
+        <div class="two-col" style="margin-top:20px">
+          <!-- การ์ด: ข้อมูลหลักสูตร (ค่าเทอม, ระยะเวลา, 2 ปริญญา) -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-cert" />
+                </svg></div>
+              <h3>ข้อมูลหลักสูตร</h3>
+            </div>
+            <div class="stat-row">
+              <div class="stat-box">
+                <div class="stat-num">40,000</div>
+                <div class="stat-unit">บาท / ภาคการศึกษา</div>
+                <div class="stat-lbl">ค่าธรรมเนียมการศึกษา</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-num">4</div>
+                <div class="stat-unit">ปี</div>
+                <div class="stat-lbl">ระยะเวลาศึกษา</div>
+              </div>
+            </div>
+            <div class="degree-row">
+              <div class="degree-box">
+                <div class="db-icon"><svg width="22" height="22" color="white">
+                    <use href="#i-chip" />
+                  </svg></div>
+                <div class="db-deg">วศ.บ.</div>
+                <div class="db-name">วิศวกรรมระบบ IoT และสารสนเทศ</div>
+              </div>
+              <div class="degree-box">
+                <div class="db-icon"><svg width="22" height="22" color="white">
+                    <use href="#i-atom" />
+                  </svg></div>
+                <div class="db-deg">วท.บ.</div>
+                <div class="db-name">ฟิสิกส์อุตสาหกรรม</div>
+              </div>
+            </div>
+          </div>
+          <!-- การ์ด: Curriculum & Core Skills (บูรณาการ 2 สาขา) -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-book" />
+                </svg></div>
+              <h3>Curriculum & Core Skills</h3>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Electronics & Intelligence</div>
+              <div class="c-desc">วงจรไฟฟ้า, อิเล็กทรอนิกส์, ระบบดิจิทัล และ Embedded Systems</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Smart Technology</div>
+              <div class="c-desc">ออกแบบ Smart Devices, Smart Sensors และระบบ IoT สำหรับอุตสาหกรรม</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">ฟิสิกส์อุตสาหกรรม</div>
+              <div class="c-desc">ฟิสิกส์พื้นฐานและฟิสิกส์ประยุกต์เชิงลึก บูรณาการเข้ากับเทคโนโลยีสมัยใหม่</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Innovation Integration</div>
+              <div class="c-desc">บูรณาการวิทยาศาสตร์กับวิศวกรรมเพื่อสร้างนวัตกรรมขับเคลื่อน Thailand 4.0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <!-- การ์ด: Career Paths (2 สาย — วิศวกรรม + วิจัย) -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-briefcase" />
+                </svg></div>
+              <h3>Career Paths</h3>
+            </div>
+            <div class="section-lbl">สายงานวิศวกรรมและพัฒนา</div>
+            <div class="career-grid two" style="margin-bottom:12px">
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-wifi" />
+                  </svg></div><span class="cc-title">IoT Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-cpu" />
+                  </svg></div><span class="cc-title">Embedded Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-monitor" />
+                  </svg></div><span class="cc-title">Software Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-mobile" />
+                  </svg></div><span class="cc-title">Application Developer</span>
+              </div>
+            </div>
+            <div class="section-lbl">สายงานวิจัยและข้อมูล</div>
+            <div class="career-grid two">
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-chart" />
+                  </svg></div><span class="cc-title">Data Scientist</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-check-sq" />
+                  </svg></div><span class="cc-title">QA / QC Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-rd" />
+                  </svg></div><span class="cc-title">R&amp;D Engineer</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-grad" />
+                  </svg></div><span class="cc-title">นักวิจัย / นักวิชาการ</span>
+              </div>
+            </div>
+          </div>
+          <!-- การ์ด: ประวัติหลักสูตร (Timeline สั้น) -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-clock" />
+                </svg></div>
+              <h3>ประวัติหลักสูตร</h3>
+            </div>
+            <div class="timeline">
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">จุดเริ่มต้น (พ.ศ. 2517 – 2541)</div>
+                <div class="tl-text">ก่อตั้งในชื่อ "ภาควิชาเทคนิคอุตสาหกรรม" เน้นผลิตบัณฑิตสายปฏิบัติการ</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">ยุคแห่งสารสนเทศ (พ.ศ. 2544)</div>
+                <div class="tl-text">ปรับเปลี่ยนเป็น "ภาควิชาวิศวกรรมสารสนเทศ" รองรับโลกไอทีและโทรคมนาคม</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">การพัฒนาต่อเนื่อง (พ.ศ. 2553)</div>
+                <div class="tl-text">ร่วมมือกับภาควิชาวิศวกรรมคอมพิวเตอร์ เพื่อเสริมความแข็งแกร่งทางวิชาการ</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">สู่ยุค PhysIoT (พ.ศ. 2564 – ปัจจุบัน)</div>
+                <div class="tl-text">ยกระดับสู่ "วิศวกรรมระบบไอโอทีและสารสนเทศ" พร้อมเปิด Dual Degree
+                  ร่วมกับคณะวิทยาศาสตร์</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- END Tab 2: Dual Degree -->
+
+
+    <!-- ════════════════════════════════════════════════════════════
+     [HTML] TAB 3 — Industrial Physics (ฟิสิกส์อุตสาหกรรม)
+     หลักสูตร: วิทยาศาสตรบัณฑิต (วท.บ.) ฟิสิกส์อุตสาหกรรม
+     คณะ: คณะวิทยาศาสตร์ KMITL
+     ════════════════════════════════════════════════════════════ -->
+    <div class="content-section" id="tab-physics">
+
+      <!-- Hero: ชื่อหลักสูตร + จุดเด่น -->
+      <div class="hero">
+        <div class="hero-inner">
+          <div class="hero-badge"><svg width="13" height="13">
+              <use href="#i-atom" />
+            </svg> วิทยาศาสตรบัณฑิต · วท.บ.</div>
+          <div class="hero-layout">
+            <div>
+              <h2>ฟิสิกส์อุตสาหกรรม</h2>
+              <div class="subtitle">Industrial Physics · คณะวิทยาศาสตร์ KMITL</div>
+              <p class="hero-desc">ในโลกยุค Digital 4.0 หลักสูตรนี้ผสานความรู้ด้าน Data Science, AI
+                และฟิสิกส์ประยุกต์เพื่อผลิตบัณฑิตที่พร้อมสร้างนวัตกรรมและตอบโจทย์อุตสาหกรรม New S-Curve</p>
+              <p
+                style="font-size:clamp(11px,1.1vw,13px);color:var(--light-sky);font-style:italic;margin-top:10px;font-weight:300">
+                "ฟิสิกส์ยุคใหม่ ประยุกต์ได้จริง ตอบโจทย์อุตสาหกรรม"</p>
+            </div>
+            <div>
+              <div class="hero-right-label">จุดเด่นของหลักสูตร</div>
+              <div class="pill-list">
+                <div class="pill">ฟิสิกส์ประยุกต์เชิงลึก ต่อยอดได้จริง</div>
+                <div class="pill">AI &amp; Data Science for Physics</div>
+                <div class="pill">เชื่อมโยงภาคอุตสาหกรรมจริง</div>
+                <div class="pill">Smart Farm &amp; นวัตกรรมเกษตร</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- เนื้อหา -->
+      <div class="page-wrap" style="padding-top:24px">
+        <div class="two-col">
+          <!-- การ์ด: ข้อมูลหลักสูตร (Single Degree วท.บ.) -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-atom" />
+                </svg></div>
+              <h3>ข้อมูลหลักสูตร</h3>
+            </div>
+            <div class="single-deg">
+              <div class="sd-icon"><svg width="30" height="30" color="var(--light-sky)">
+                  <use href="#i-atom" />
+                </svg></div>
+              <div class="sd-deg">วท.บ.</div>
+              <div class="sd-name">ฟิสิกส์อุตสาหกรรม</div>
+              <div class="sd-sub">Bachelor of Science (Industrial Physics)</div>
+              <div class="sd-tag"><svg width="13" height="13">
+                  <use href="#i-cert" />
+                </svg> 1 ปริญญา · หลักสูตร 4 ปี</div>
+            </div>
+            <div class="note-box"><strong>คณะวิทยาศาสตร์</strong>
+              สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>มุ่งผลิตบัณฑิตที่มีความเชี่ยวชาญฟิสิกส์เฉพาะทาง
+              พร้อมทักษะปฏิบัติจริง เพื่อเข้าสู่ภาคอุตสาหกรรมและงานวิจัยชั้นนำ</div>
+          </div>
+          <!-- การ์ด: Curriculum & Core Skills -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-book" />
+                </svg></div>
+              <h3>Curriculum & Core Skills</h3>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Data Science for Physics</div>
+              <div class="c-desc">การโปรแกรมภาษา Python เพื่อวิเคราะห์ข้อมูลทางฟิสิกส์เชิงลึก</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Automated Inspection (AOI)</div>
+              <div class="c-desc">เทคโนโลยีระบบตรวจสอบชิ้นงานด้วยภาพถ่ายแบบอัตโนมัติ (AOI)</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Medical Imaging</div>
+              <div class="c-desc">การประมวลผลภาพทางการแพทย์</div>
+            </div>
+            <div class="c-item">
+              <div class="c-title">Smart Technology</div>
+              <div class="c-desc">ประยุกต์ฟิสิกส์เพื่อเกษตรอัจฉริยะ (Smart Farm) และการออกแบบอุปกรณ์สมัยใหม่</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <!-- การ์ด: Career Paths (2 สาย — อุตสาหกรรม + เทคโนโลยี) -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-briefcase" />
+                </svg></div>
+              <h3>Career Paths</h3>
+            </div>
+            <div class="section-lbl">สายงานอุตสาหกรรม</div>
+            <div class="career-grid two" style="margin-bottom:12px">
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-gears" />
+                  </svg></div><span class="cc-title">นักฟิสิกส์อุตสาหกรรม / กระบวนการผลิต</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-eye" />
+                  </svg></div><span class="cc-title">นักทดสอบ / ควบคุมคุณภาพ QC/QA</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-gem" />
+                  </svg></div><span class="cc-title">นักวิทยาศาสตร์วัสดุ</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-microscope" />
+                  </svg></div><span class="cc-title">นักวิทยาศาสตร์ประยุกต์</span>
+              </div>
+            </div>
+            <div class="section-lbl">สายงานเทคโนโลยีและวิจัย</div>
+            <div class="career-grid two">
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-chart" />
+                  </svg></div><span class="cc-title">นักวิทยาการข้อมูล (Data Scientist)</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-flask" />
+                  </svg></div><span class="cc-title">นักวิจัย / นัก STEM ศึกษา</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-leaf" />
+                  </svg></div><span class="cc-title">นักวิทยาศาสตร์ Smart Farm</span>
+              </div>
+              <div class="career-card">
+                <div class="cc-icon"><svg width="22" height="22">
+                    <use href="#i-bulb" />
+                  </svg></div><span class="cc-title">ผู้ประกอบการธุรกิจเทคโนโลยี</span>
+              </div>
+            </div>
+          </div>
+          <!-- การ์ด: ความเชี่ยวชาญอาจารย์ (Badge Grid + Note) -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon"><svg width="19" height="19" color="white">
+                  <use href="#i-star" />
+                </svg></div>
+              <h3>ความเชี่ยวชาญอาจารย์</h3>
+            </div>
+            <div class="badge-grid">
+              <div class="badge">Thermoelectric</div>
+              <div class="badge">Nanotechnology</div>
+              <div class="badge">Solar Cells</div>
+              <div class="badge">Optical Sensors</div>
+              <div class="badge">Thin Film</div>
+              <div class="badge">Smart Farming</div>
+              <div class="badge">Digital Holography</div>
+              <div class="badge">Nanoelectronics</div>
+            </div>
+            <div class="note-box">
+              ประเทศไทยยังมีความต้องการบุคลากรที่มีความเชี่ยวชาญเฉพาะทางฟิสิกส์และทักษะปฏิบัติจริงอีกจำนวนมาก
+              หลักสูตรนี้จึงมุ่งผลิตบัณฑิตเพื่อเข้าไปมีบทบาทสำคัญในการพัฒนาประเทศ</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- END Tab 3: Industrial Physics -->
+
+
+    <!-- ============================================================
+      ██╗███████╗
+      ██║██╔════╝
+      ██║███████╗
+ ██   ██║╚════██║
+ ╚█████╔╝███████║
+  ╚════╝ ╚══════╝
+     JavaScript — ลอจิกการทำงานทั้งหมด
+     ฟังก์ชันหลัก:
+       1. toggleMenu()   — เปิด/ปิด nav menu บน mobile
+       2. switchTab()    — สลับแท็บหลักสูตร
+       3. moveCarousel() — เลื่อน carousel ด้วยปุ่ม
+       4. goToSlide()    — กระโดดไปสไลด์ที่กำหนด
+       5. updateCarousel() — อัปเดต UI carousel (transform + dots)
+
+     ============================================================ -->
+    <script src="js/2about.js"></script>
+       /*<!-- HEADER SCRIPT -->*/
+    <script src="js/header.js"></script>
+
+    /*<!-- MAIN SCRIPT -->*/
+    <script src="js/1main.js"></script>
+
+
+  </body>
+
+</html>

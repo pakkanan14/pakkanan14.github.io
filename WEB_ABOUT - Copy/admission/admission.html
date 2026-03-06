@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admission IoTE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="/css/4admission.css">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- HEADER LOAD -->
+    <div id="header"></div>
+
+    <script>
+        fetch("../header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+    </script>
+    <!-- HEADER SCRIPT -->
+    <script src="../js/header.js"></script>
+
+    <!-- MAIN SCRIPT -->
+    <script src="../student-services/function.js"></script>
+
+
+
+        <!-- ================= BANNER ================= -->
+        <section class="banner admission-banner" data-aos="fade-up">
+            <h1 data-aos="fade-up" data-aos-delay="200">ADMISSION</h1>
+            <p data-aos="fade-up" data-aos-delay="400">รับสมัคร 5 คน</p>
+        </section>
+
+        <!-- ================= CONTENT ================= -->
+        <section class="admission-section">
+
+            <div class="admission-card" data-aos="zoom-in" data-aos-delay="200">
+
+                <h2>ADMISSION</h2>
+
+                <p class="title">คุณสมบัติ</p>
+                <ul data-aos="fade-up" data-aos-delay="300">
+                    <li>รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง</li>
+                    <li>รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ</li>
+                    <li>รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะศึกษา</li>
+                </ul>
+
+                <p class="title">เงื่อนไขการรับ</p>
+                <p data-aos="fade-up" data-aos-delay="350">
+                    คัดเลือกนักเรียนสาย วิทย์-คณิต<br>
+                    ต้องมีผลการสอบ TGAT, TPAT3,
+                    A-Level Math 1 และ Physics
+                </p>
+
+                <p class="title">การคำนวณคะแนน</p>
+
+                <!-- SCORE BAR -->
+                <div class="score-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="score-label">
+                        <span>TGAT</span>
+                        <span>20%</span>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" style="--width:20%"></div>
+                    </div>
+                </div>
+
+                <div class="score-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="score-label">
+                        <span>TPAT3</span>
+                        <span>25%</span>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" style="--width:25%"></div>
+                    </div>
+                </div>
+
+                <div class="score-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="score-label">
+                        <span>A-Level Math 1</span>
+                        <span>25%</span>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" style="--width:25%"></div>
+                    </div>
+                </div>
+
+                <div class="score-item" data-aos="fade-right" data-aos-delay="400">
+                    <div class="score-label">
+                        <span>A-Level Physics</span>
+                        <span>30%</span>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" style="--width:30%"></div>
+                    </div>
+                </div>
+
+                <p class="title">จำนวนที่เปิดรับ</p>
+                <p data-aos="fade-up" data-aos-delay="450">5 คน</p>
+
+                <p class="title">รายละเอียดเพิ่มเติม</p>
+                <a href="https://new.reg.kmitl.ac.th/admission/#/" target="_blank" data-aos="fade-up"
+                    data-aos-delay="500">
+                    https://new.reg.kmitl.ac.th/admission/#/
+                </a>
+
+            </div>
+        </section>
+        <!-- AOS JS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <script>
+            AOS.init({
+                duration: 1000,
+                once: true,
+                easing: 'ease-in-out',
+                offset: 100
+            });
+        </script>
+
+    </body>
+
+</html>

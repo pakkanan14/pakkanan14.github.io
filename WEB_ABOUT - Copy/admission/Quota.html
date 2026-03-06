@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admission IoTE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="/css/4admission.css">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- HEADER LOAD -->
+    <div id="header"></div>
+
+    <script>
+        fetch("../header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+    </script>
+    <!-- HEADER SCRIPT -->
+    <script src="../js/header.js"></script>
+
+    <!-- MAIN SCRIPT -->
+    <script src="../student-services/function.js"></script>
+
+
+        <script>
+            function toggleMenu() {
+                document.getElementById("menu").classList.toggle("show");
+            }
+        </script>
+
+        <!-- ================= BANNER ================= -->
+        <section class="banner quota-banner" data-aos="fade-up">
+            <h1>QUOTA</h1>
+            <p>รับสมัคร 15 คน</p>
+        </section>
+
+        <!-- ================= QUOTA SECTION ================= -->
+        <section class="quota-section">
+
+            <button class="nav-btn" onclick="prevSlide()" data-aos="fade-right">❮</button>
+
+            <div class="quota-card" data-aos="zoom-in" data-aos-duration="800">
+                <h2 id="title"></h2>
+
+                <p class="title">จำนวนรับ</p>
+                <p id="amount"></p>
+
+                <p class="title">คุณสมบัติ</p>
+                <ul id="desc"></ul>
+
+                <p class="title">รายละเอียดเพิ่มเติม</p>
+                <a id="link" href="#" target="_blank"></a>
+            </div>
+
+            <button class="nav-btn" onclick="nextSlide()" data-aos="fade-left">❯</button>
+
+        </section>
+
+        <div class="dots" id="dots" data-aos="fade-up"></div>
+
+        <!-- ================= SLIDE SCRIPT ================= -->
+        <script>
+            const slides = [
+                {
+                    title: "โควตาเรียนดี",
+                    amount: "15 คน (รับร่วมกัน)",
+                    desc: [
+                        "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+                        "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+                        "รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะศึกษา",
+                        "ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อย 5 ภาคการศึกษา ไม่น้อยกว่า 3.00"
+                    ],
+                    link: "https://new.reg.kmitl.ac.th/admission/#/"
+                },
+                {
+                    title: "โควตากิจกรรม K - engineering",
+                    amount: "15 คน (รับร่วมกัน)",
+                    desc: [
+                        "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+                        "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+                        "รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะศึกษา",
+                        "ผู้สมัครจะต้องมีผลการเรียนเฉลี่ยสะสมรวมอย่างน้อย 5 ภาคการศึกษา ไม่น้อยกว่า 2.75",
+                        "เป็นผู้ที่ผ่านการเข้าร่วมกิจกรรมและได้รับประกาศนียบัตร"
+                    ],
+                    link: "https://new.reg.kmitl.ac.th/admission/#/"
+                },
+                {
+                    title: "โควตา KMITL One",
+                    amount: "15 คน (รับร่วมกัน)",
+                    desc: [
+                        "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+                        "รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+                        "มีผลการเรียนเฉลี่ยสะสมรวม 5 ภาคการศึกษา มากกว่า 3.00 หรือมากกว่า 2.75 สำหรับผู้สมัครโครงการ K-Engineering"
+                    ],
+                    link: "https://new.reg.kmitl.ac.th/admission/#/"
+                }
+            ];
+
+            let current = 0;
+
+            function showSlide(index) {
+                document.getElementById("title").innerText = slides[index].title;
+                document.getElementById("amount").innerText = slides[index].amount;
+
+                const descList = document.getElementById("desc");
+                descList.innerHTML = "";
+                slides[index].desc.forEach(item => {
+                    const li = document.createElement("li");
+                    li.innerText = item;
+                    descList.appendChild(li);
+                });
+
+                const link = document.getElementById("link");
+                link.href = slides[index].link;
+                link.innerText = slides[index].link;
+
+                updateDots();
+            }
+
+            function nextSlide() {
+                current = (current + 1) % slides.length;
+                showSlide(current);
+            }
+
+            function prevSlide() {
+                current = (current - 1 + slides.length) % slides.length;
+                showSlide(current);
+            }
+
+            function updateDots() {
+                const dotsContainer = document.getElementById("dots");
+                dotsContainer.innerHTML = "";
+                slides.forEach((_, i) => {
+                    const dot = document.createElement("span");
+                    if (i === current) dot.classList.add("active");
+                    dot.onclick = () => { current = i; showSlide(i); };
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            showSlide(current);
+        </script>
+
+        <!-- ✅ AOS JS -->
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
+        </script>
+       
+    </body>
+
+</html>

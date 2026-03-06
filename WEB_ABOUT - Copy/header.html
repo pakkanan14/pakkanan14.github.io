@@ -1,0 +1,195 @@
+<header>
+
+    <!-- ================= TOP BAR ================= -->
+    <div class="top-bar">
+
+        <img src="../images/logo.png" class="logo">
+
+        <div class="title-box">
+            <div class="title">
+                DEPARTMENT OF IOT AND<br>
+                INFORMATION ENGINEERING
+            </div>
+
+            <div class="subtitle">
+                King Mongkut's Institute of Technology Ladkrabang
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            🔍
+        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    </div>
+
+
+    <!-- ================= MAIN MENU ================= -->
+    <nav class="menu">
+
+        <a href="../1index.html">HOME</a>
+
+        <a href="../2about.html">ABOUT IOTE</a>
+
+
+        <!-- ACADEMICS -->
+        <div class="dropdown-wrap">
+
+            <a href="#" onclick="toggleAcademicsDropdown(event)">
+                ACADEMICS ▼
+            </a>
+
+            <div class="dropdown-menu" id="academicsDropdown">
+
+                <a href="../academics/3academics.html?track=iot">
+                    1 ปริญญา (IOTE)
+                </a>
+
+                <a href="../academics/3academics.html?track=dual">
+                    2 ปริญญา (PhysIoT)
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMISSION -->
+        <div class="dropdown-wrap">
+
+            <a href="#" onclick="toggleAdmissionDropdown(event)">
+                ADMISSION ▼
+            </a>
+
+            <div class="dropdown-menu" id="admissionDropdown">
+
+                <a href="../admission/4admission.html">Information</a>
+                <a href="../admission/portfolio.html">Portfolio</a>
+                <a href="../admission/quota.html">Quota</a>
+                <a href="../admission/admission.html">Admission</a>
+            </div>
+
+        </div>
+
+
+        <a href="../5faculty.html">FACULTY</a>
+
+
+        <!-- STUDENT SERVICES -->
+        <div class="dropdown-wrap">
+
+            <a href="#" onclick="toggleDropdown(event)">
+                STUDENT SERVICES ▼
+            </a>
+
+            <div class="dropdown-menu" id="studentDropdown">
+
+                <a href="../student-services/function1.html">
+                    GPA Calculator
+                </a>
+
+                <a href="../student-services/function2.html">
+                    GPA Prediction & Graduation Simulator
+                </a>
+
+                <a href="../student-services/function3.html">
+                    Function 3
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= SIDE MENU ================= -->
+    <div class="side-menu" id="menu">
+
+        <div class="menu-header">
+
+            <input type="text" placeholder="Search">
+
+            <span class="close-btn" onclick="toggleMenu()">✕</span>
+
+        </div>
+
+
+        <div class="menu-links">
+
+            <a href="../1index.html">HOME</a>
+
+            <a href="../2about.html">ABOUT IOTE</a>
+
+
+            <a href="javascript:void(0)" onclick="toggleAcademicsSubMenu(event)">
+                ACADEMICS ▼
+            </a>
+
+            <div class="sub-menu" id="academicsSubMenu">
+
+                <a href="../academics/3academics.html?track=iot">
+                    1 ปริญญา (IOTE)
+                </a>
+
+                <a href="../academics/3academics.html?track=dual">
+                    2 ปริญญา (PhysIoT)
+                </a>
+
+            </div>
+
+
+            <a href="javascript:void(0)" onclick="toggleAdmissionSubMenu(event)">
+                ADMISSION ▼
+            </a>
+
+            <div class="sub-menu" id="admissionSubMenu">
+                <a href="../admission/4admission.html">Information</a>
+
+                <a href="../admission/portfolio.html">Portfolio</a>
+
+                <a href="../admission/quota.html">Quota</a>
+
+                <a href="../admission/admission.html">Admission</a>
+
+            </div>
+
+
+            <a href="../5faculty.html">FACULTY</a>
+
+
+            <a href="javascript:void(0)" onclick="toggleSubMenu(event)">
+                STUDENT SERVICES ▼
+            </a>
+
+            <div class="sub-menu" id="subMenu">
+
+                <a href="../student-services/function1.html">
+                    GPA Calculator
+                </a>
+
+                <a href="../student-services/function2.html">
+                    GPA Prediction & Graduation Simulator
+                </a>
+
+                <a href="../student-services/function3.html">
+                    Function 3
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-footer">
+
+            DEPARTMENT OF IOT AND<br>
+            INFORMATION ENGINEERING
+
+        </div>
+
+    </div>
+
+</header>

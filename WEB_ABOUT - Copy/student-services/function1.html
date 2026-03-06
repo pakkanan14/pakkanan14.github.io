@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IOTE Department</title>
+<link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/1main.css">
+<link rel="stylesheet" href="../student-services/function.css">
+</head>
+
+
+<body>
+
+  <body>
+
+        <!-- HEADER LOAD -->
+        <div id="header"></div>
+
+        <script>
+            fetch("../header.html")
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById("header").innerHTML = data;
+                });
+        </script>
+        <script src="../js/header.js"></script>
+        <script src="../student-services/function.js"></script>
+
+
+
+<!-- ================= GPA SECTION ================= -->
+
+<section class="gpa-section">
+
+    
+    <div class="gpa-container">
+
+        <h2 class="gpa-title">Dual Degree GPA Calculator</h2>
+        <p class="gpa-subtitle">
+            คำนวณเกรดเฉลี่ยแยกฝั่ง ฟิสิกส์อุตสาหรรม และ วิศวกรรมระบบไอโอทีและสารสนเทศ
+        </p>
+
+        <div class="gpa-card">
+
+            
+            <table id="gradeTable">
+                <thead>
+                    <tr>
+                        <th>รหัสวิชา</th>
+                        <th>ชื่อวิชา</th>
+                        <th>หน่วยกิต</th>
+                        <th>ประเภท</th>
+                        <th>เกรด</th>
+                        <th>ลบ</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            
+<div class="search-box-gpa">
+    <input type="text"
+           id="subjectInput"
+           placeholder="พิมพ์รหัสวิชา..."
+           onkeyup="searchSubject()">
+
+<button class="calculate-btn" onclick="addManualRow()" style="margin-top: 16px;">
+    ➕ เพิ่มวิชาเอง
+</button>
+             
+
+    <div id="searchResult" class="search-result"></div>
+</div>
+
+<button class="calculate-btn" onclick="calculateGPA()" style="margin-top: 20px;">
+    คำนวณ GPA
+</button>
+
+        </div>
+
+        
+       <div class="result-wrapper" id="resultBox">
+
+    <div class="result-card">
+        <h3>GPA วิทยาศาสตร์</h3>
+        <p>Total Credits: <span id="sciCredit">0</span></p>
+        <div class="result-value" id="sciGPA">-</div>
+    </div>
+
+    <div class="result-card">
+        <h3>GPA วิศวกรรม</h3>
+        <p>Total Credits: <span id="engCredit">0</span></p>
+        <div class="result-value" id="engGPA">-</div>
+    </div>
+
+    <div class="result-card highlight">
+        <h3>GPA รวม</h3>
+        <p>Total Credits: <span id="totalCredit">0</span></p>
+        <div class="result-value" id="totalGPA">-</div>
+    </div>
+
+</div>
+    </div>
+
+    
+</section>
+
+<!-- ================= SINGLE DEGREE ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="function.js"></script>
+
+<hr style="margin:60px 0;">
+
+<section class="single-section">
+
+    <h2 class="gpa-title">Single Degree GPA Calculator</h2>
+<div class="gpa-container">
+    <div class="gpa-card">
+
+        <table id="singleGradeTable">
+            <thead>
+                <tr>
+                    <th>รหัสวิชา</th>
+                    <th>ชื่อวิชา</th>
+                    <th>หน่วยกิต</th>
+                    <th>เกรด</th>
+                    <th>ลบ</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="search-box-gpa">
+            <input type="text"
+                   id="singleSubjectInput"
+                   placeholder="พิมพ์รหัสวิชา..."
+                   onkeyup="searchSingleSubject()">
+
+
+<button class="calculate-btn" onclick="addSingleManualRow()" style="margin-top: 16px;">
+    ➕ เพิ่มวิชาเอง
+</button>
+                   
+
+            <div id="singleSearchResult" class="search-result"></div>
+        </div>
+
+<button class="calculate-btn" onclick="calculateSingleGPA()" style="margin-top: 20px;">
+    คำนวณ GPA
+</button>
+
+    </div>
+
+    <div class="result-card highlight">
+        <h3>🎓 GPA รวม (Single Degree)</h3>
+        <p>Total Credits: <span id="singleTotalCredit">0</span></p>
+        <p>GPA: <span id="singleGPA">-</span></p>
+    </div>
+
+</section>
+  
+</body>
+</html>
+
+
+

@@ -1,0 +1,820 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  background: linear-gradient(180deg,
+      #1C4D8D 0%,
+      #2F6EB5 35%,
+      #8EA9C9 70%,
+      #E5E9F0 100%);
+
+  min-height: 100vh;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ---------------- HEADER BLUE BAR ---------------- */
+.top-bar {
+    background: #1C4D8D;
+    color: #C2E4F2;
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    gap: 20px;
+    padding-bottom: 40px;  
+}
+
+.logo {
+    height: 65px;
+}
+
+.title-box {
+    flex-grow: 1;
+}
+
+.title { font-size: 20px; font-weight: bold; line-height: 1.3; }
+.subtitle { font-size: 13px; color: #FF8246; }
+
+/* ---------- Language Switch ---------- */
+.right-tools {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+
+.search-icon {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.search-box input {
+    width: 170px;              
+    padding: 8px 12px;
+    border-radius: 6px;        
+    border: 2px solid #FFFEEB; 
+    background: #FFFEEB;       
+    outline: none;
+    font-size: 14px;
+}
+
+/* ---------- HAMBURGER (Mobile Only) ---------- */
+.hamburger {
+    font-size: 26px;
+    cursor: pointer;
+    display: none;
+    color: white;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    
+}
+/* ---------------- MENU BAR ---------------- */
+.menu {
+    background: #C2E4F2;        
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;    
+    gap: 40px;
+    font-size: 16px;
+    font-weight: 550;
+
+    width: 85%;
+    margin: 0 auto;
+    padding: 20px 20px;
+    border-radius: 25px;
+
+    margin-top: -30px;
+    position: relative;
+    z-index: 10;
+}
+
+.menu a,
+.menu .dropdown {
+    text-decoration: none;
+    color: #1C4D8D;             
+    cursor: pointer;
+}
+
+.menu a:hover,
+.menu .dropdown:hover {
+    background-color: rgba(28, 77, 141, 0.1);
+}
+
+
+.menu .active {
+    border-bottom: 3px solid #1C4D8D;  
+    padding-bottom: 0px;
+    line-height: 1;
+    display: inline-block;
+}
+/* ---------------- SIDE MENU ---------------- */
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: linear-gradient(180deg, #1C4D8D, #081F3F);
+    color: white;
+    padding: 40px 25px;
+    transition: 0.4s ease;
+    z-index: 10000;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu.show {
+    right: 0;
+}
+
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-header input {
+    width: 80%;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+}
+
+.close-btn {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.menu-links {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.menu-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
+}
+
+.menu-footer {
+    margin-top: auto;
+    color: #FF8246;
+    font-size: 14px;
+    margin-bottom: 90px; 
+}
+
+/* Active สำหรับ mobile menu */
+.menu-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
+    display: block;
+}
+
+/* เส้นใต้ตอนกด */
+.menu-links a:focus,
+.menu-links a:active {
+    border-bottom: 3px solid #FF8246;
+}
+/* ---------------- RESPONSIVE ---------------- */
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media(max-width: 650px) {
+
+    /* แสดง hamburger */
+    .hamburger {
+        display: block;
+    }
+
+    /* ซ่อน navbar */
+    .menu {
+        display: none;
+    }
+
+    /*  ซ่อน search box ตอนจอเล็ก */
+    .search-box {
+        display: none;
+    }
+
+    /* ปรับ padding */
+    .top-bar {
+        padding: 15px 20px;
+    }
+
+}
+@media(min-width: 650px) {
+
+    /* ซ่อน hamburger */
+    .hamburger {
+        display: none;
+    }
+
+/* -------- SEARCH BOX -------- */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #FFFEEB;
+    border-radius: 25px;
+    padding: 5px 12px;
+    gap: 8px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    width: 140px;
+}
+
+.search-box input::placeholder {
+    color: #555;
+}
+
+/* ── DROPDOWN ── */
+.dropdown-wrap {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    min-width: 160px;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #1C4D8D;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: #f0f6ff;
+}
+
+.dropdown-wrap:hover .dropdown-menu {
+    display: block;
+}
+}
+
+.card-section {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 5%;
+}
+
+.card {
+  width: 300px;
+  height: 200px;
+  background: url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width:1024px) {
+  .card-section {
+    flex-wrap: wrap;
+  }
+
+  .navbar {
+    width: 90%;
+  }
+}
+
+@media (max-width:768px) {
+  .top-bar {
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+.navbar {
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 20px;
+}
+
+.card-section {
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  width: 90%;
+}
+
+
+/* DETAIL SECTION */
+.detail-section {
+  padding: 80px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* การ์ดแบบ Figma */
+.detail-card {
+  width: 480px;
+  max-width: 95%;
+  padding: 45px;
+  border-radius: 25px;
+  color: white;
+
+  /* ฟ้า overlay แบบในภาพ */
+  background:
+    linear-gradient(rgba(30, 64, 175, 0.75),
+      rgba(37, 99, 235, 0.75)),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475");
+
+  background-size: cover;
+  background-position: center;
+
+  /* เงานุ่ม ๆ */
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+
+  backdrop-filter: blur(3px);
+}
+
+/* หัวข้อ */
+.detail-card h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+/* เนื้อหา */
+.detail-card p {
+  margin-bottom: 14px;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.detail-card .title {
+  font-weight: bold;
+  margin-top: 20px;
+  color: #c7d2fe;
+}
+
+/* ปุ่ม */
+.btn-wrapper {
+  margin-top: 35px;
+}
+
+.more-btn {
+  padding: 15px 32px;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+  transition: 0.3s;
+}
+
+.more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.7);
+}
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .detail-card {
+    padding: 30px;
+  }
+}
+
+/* เอฟเฟกต์ลอยนุ่ม ๆ */
+.card {
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* hover ลอยขึ้น */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* แสงวิ่งผ่านการ์ด */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
+  transition: 0.6s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+/* ================= PORTFOLIO BANNER ================= */
+
+.banner {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.portfolio-banner {
+  background: url("https://images.unsplash.com/photo-1518770660439-4636190af475") center/cover;
+  position: relative;
+}
+
+.portfolio-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.portfolio-banner h1,
+.portfolio-banner p {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= PORTFOLIO SECTION ================= */
+
+.portfolio-section {
+  margin: 60px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+/* การ์ด */
+.portfolio-card {
+  width: 500px;
+  max-width: 95%;
+  padding: 45px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  color: white;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  transition: 0.4s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+}
+
+.portfolio-card ul {
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+/* หัวข้อย่อย */
+.portfolio-card .title {
+  font-weight: bold;
+  margin-top: 20px;
+  color: #dbeafe;
+}
+
+/* ปุ่มเลื่อน */
+.nav-btn {
+  background: white;
+  border: none;
+  font-size: 26px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Dots */
+.dots {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+}
+
+.dots span.active {
+  background: #1e3a8a;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px) {
+  .portfolio-section {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    order: 2;
+  }
+}
+
+/* ================= Quota BANNER ================= */
+
+.banner {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.quota-banner {
+  background: url("https://images.unsplash.com/photo-1518770660439-4636190af475") center/cover;
+  position: relative;
+}
+
+.quota-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.quota-banner h1,
+.quota-banner p {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= QUOTA SECTION ================= */
+
+.quota-section {
+  margin: 60px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+/* การ์ด */
+.quota-card {
+  width: 500px;
+  max-width: 95%;
+  padding: 45px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  color: white;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  transition: 0.4s;
+}
+
+.quota-card:hover {
+  transform: translateY(-8px);
+}
+
+.quota-card ul {
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+/* หัวข้อย่อย */
+.quota-card .title {
+  font-weight: bold;
+  margin-top: 20px;
+  color: #dbeafe;
+}
+
+/* ปุ่มเลื่อน */
+.nav-btn {
+  background: white;
+  border: none;
+  font-size: 26px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Dots */
+.dots {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+}
+
+.dots span.active {
+  background: #1e3a8a;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px) {
+  .quota-section {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    order: 2;
+  }
+}
+
+/* ================= Admission BANNER ================= */
+
+.banner {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.admission-banner {
+  background: url("https://images.unsplash.com/photo-1518770660439-4636190af475") center/cover;
+  position: relative;
+}
+
+.admission-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.admission-banner h1,
+.admission-banner p {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= QUOTA SECTION ================= */
+
+.admission-section {
+  margin: 60px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+/* การ์ด */
+.admission-card {
+  width: 500px;
+  max-width: 95%;
+  padding: 45px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  color: white;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  transition: 0.4s;
+}
+
+.admission-card:hover {
+  transform: translateY(-8px);
+}
+
+.admission-card ul {
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+/* หัวข้อย่อย */
+.admission-card .title {
+  font-weight: bold;
+  margin-top: 20px;
+  color: #dbeafe;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px) {
+  .quota-section {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    order: 2;
+  }
+}
+
+/* ================= SCORE BAR (ADMISSION) ================= */
+
+.score-section {
+  margin-top: 25px;
+}
+
+.score-item {
+  margin-bottom: 18px;
+}
+
+.score-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #e0f2fe;
+}
+
+.score-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* แทบเปอร์เซ็นต์ */
+.score-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #00e0ff, #00ffb3);
+  animation: fillBar 1.5s ease-out forwards;
+}
+
+/* Animation วิ่งตามค่า --width */
+@keyframes fillBar {
+  to {
+    width: var(--width);
+  }
+}
